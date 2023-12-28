@@ -1,3 +1,4 @@
+using lutoftheque.api.Services;
 using lutoftheque.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +15,7 @@ var lutofthequeConnectionString = builder.Configuration.GetConnectionString("lut
 
 
 builder.Services.AddDbContext<lutofthequeContext>(opts => opts.UseSqlServer(lutofthequeConnectionString));
+builder.Services.AddTransient<GameService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
