@@ -7,9 +7,9 @@ namespace lutoftheque.api.Dto
     {
         public int KeywordId { get; set; }
 
-        public string KeywordName { get; set; }
+        public string? KeywordName { get; set; }
 
-        public string KeywordDescription { get; set; }
+        public string? KeywordDescription { get; set; }
     }
 
     //keyword tel qu'il est attendu pour ajouter/modifier des données
@@ -18,8 +18,15 @@ namespace lutoftheque.api.Dto
         public int KeywordId { get; set; }
 
         [Required]
-        public string KeywordName { get; set; }
+        public string? KeywordName { get; set; }
 
-        public string KeywordDescription { get; set; }
+        public string? KeywordDescription { get; set; }
+    }
+    // Keyword renvoyé dans un jeu
+    public class KeywordLightDto
+    {
+        public int KeywordId { get; set; }
+        public string? KeywordName { get; set; }
+
     }
 }

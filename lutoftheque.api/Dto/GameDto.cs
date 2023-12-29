@@ -11,10 +11,9 @@ namespace lutoftheque.api.Dto
         public int PlayersMax { get; set; }
         public int AverageDuration { get; set; }
         public int AgeMin { get; set; }
-        public int? FkThemeId { get; set; }
-        public virtual Theme? FkTheme { get; set; }
-        public virtual ICollection<Keyword> FkKeywords { get; set; } = new List<Keyword>();
-        public virtual ICollection<Theme> FkSecondaryThemes { get; set; } = new List<Theme>();
+        public string? FkTheme { get; set; }
+        public List<string>? FkKeywords { get; set; }
+        public List<string>? FkSecondaryThemes { get; set; }
     }
     // Pour le GetById et l'update
     public class GameFullDto  // OK
@@ -30,9 +29,9 @@ namespace lutoftheque.api.Dto
         public string? Video { get; set; } 
         public int? FkThemeId { get; set; } 
         public bool? IsExtension { get; set; } 
-        public virtual Theme? FkTheme { get; set; } 
-        public virtual ICollection<Keyword> FkKeywords { get; set; } = new List<Keyword>(); 
-        public virtual ICollection<Theme> FkSecondaryThemes { get; set; } = new List<Theme>(); 
+        public string? FkTheme { get; set; }
+        public List<string>? FkKeywords { get; set; }
+        public List<string>? FkSecondaryThemes { get; set; }
     }
     // pour la creation d'un jeu
     public class GameToCreateDto  // OK
@@ -47,9 +46,10 @@ namespace lutoftheque.api.Dto
         public string? Video { get; set; }
         public int? FkThemeId { get; set; }
         public bool? IsExtension { get; set; }
-        public virtual Theme? FkTheme { get; set; }
-        public virtual ICollection<Keyword> FkKeywords { get; set; } = new List<Keyword>();
-        public virtual ICollection<Theme> FkSecondaryThemes { get; set; } = new List<Theme>();
+        public string? FkTheme { get; set; }
+        public List<string>? FkKeywords { get; set; }
+        public List<string>? FkSecondaryThemes { get; set; }
+
     }
     // version light à afficher dans les résultats de l'event
     public class GameLightDto  

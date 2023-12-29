@@ -1,4 +1,6 @@
-﻿using lutoftheque.Entity.Models;
+﻿using lutoftheque.api.Dto;
+using lutoftheque.Entity.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Reflection.Metadata;
 using System.Text;
 
@@ -16,10 +18,69 @@ namespace lutoftheque.api.Services
             this.context = context;
          }
         // public List<Game> GetGames() : Déclare une méthode publique GetGames qui retourne une liste d'objets Game.
-        public List<Game> GetGames ()
+        public List<GameDto> GetGames()
         {
-            //return context.Games.ToList(); : Cette ligne retourne la liste de tous les jeux.context.Games fait référence à la table Games dans la base de données, et ToList() convertit le résultat en une liste d'objets Game
-            return context.Games.ToList (); // correspond à "select * from Games"
+            return context.Games
+                .Include(g => g.FkTheme)
+                .Include(g => g.FkKeywords)
+                .Include(g => g.FkSecondaryThemes)
+                .Select(g => new GameDto
+                {
+                    GameId = g.GameId,
+                    GameName = g.GameName,
+                    PlayersMin = g.PlayersMin,
+                    PlayersMax = g.PlayersMax,
+                    AverageDuration = g.AverageDuration,
+                    AgeMin = g.AgeMin,
+                    FkTheme = g.FkTheme.ThemeName, 
+                    FkKeywords = g.FkKeywords.Select(k => k.KeywordName).ToList(),
+                    FkSecondaryThemes = g.FkSecondaryThemes.Select(st => st.ThemeName).ToList()
+                }).ToList();
+        }
+
+        public GameFullDto GetGameById(int id)
+        {
+            var game = context.Games
+                .Include(g => g.FkTheme)
+                .Include(g => g.FkKeywords)
+                .Include(g => g.FkSecondaryThemes)
+                .FirstOrDefault(g => g.GameId == id);
+
+            if (game == null)
+            {
+                return null;
+            }
+
+            var gameFullDto = new GameFullDto
+            {
+                GameId = game.GameId,
+                GameName = game.GameName,
+                PlayersMin = game.PlayersMin,
+                PlayersMax = game.PlayersMax,
+                AverageDuration = game.AverageDuration,
+                AgeMin = game.AgeMin,
+                Picture = game.Picture,
+                GameDescription = game.GameDescription,
+                Video = game.Video,
+                FkThemeId = game.FkThemeId,
+                IsExtension = game.IsExtension,
+                FkTheme = game.FkTheme.ThemeName,
+                FkKeywords = game.FkKeywords.Select(k => k.KeywordName).ToList(),
+                FkSecondaryThemes = game.FkSecondaryThemes.Select(k => k.ThemeName).ToList(),
+            };
+
+            return gameFullDto;
+        }
+
+        public List<GameLightDto> GetGamesForEvent()
+        {
+            return context.Games
+                .Select(g => new GameLightDto
+                {
+                    GameId = g.GameId,
+                    GameName = g.GameName,
+                    Picture = g.Picture
+                }).ToList();
         }
 
     }

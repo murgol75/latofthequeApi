@@ -24,6 +24,12 @@ namespace lutoftheque.api.Controllers
 
             return Ok(games);
         }
+        [HttpGet("{id}")]
+        public ActionResult <Game> Get(int id)
+        {
+            var game = _gameService.GetGameById(id);
+            return Ok(game);
+        }
 
     }
 }
