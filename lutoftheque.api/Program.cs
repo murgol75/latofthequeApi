@@ -22,7 +22,9 @@ var lutofthequeConnectionString = builder.Configuration.GetConnectionString("lut
 
 
 builder.Services.AddDbContext<lutofthequeContext>(opts => opts.UseSqlServer(lutofthequeConnectionString));
+builder.Services.AddTransient<PlayerService>();
 builder.Services.AddTransient<GameService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
