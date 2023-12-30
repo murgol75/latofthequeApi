@@ -38,7 +38,7 @@ namespace lutoftheque.api.Services
                 }).ToList();
         }
 
-        public GameFullDto GetGameById(int id)
+        public GameFullDto? GetGameById(int id)
         {
             var game = context.Games
                 .Include(g => g.FkTheme)

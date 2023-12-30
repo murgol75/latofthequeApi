@@ -17,32 +17,47 @@ namespace lutoftheque.api.Services
         }
         public List<PlayerParticipateDto> GetPlayers()
         {
-            return context.Players 
-.Include(p => p.PlayerKeywords)
-            .ThenInclude(pk => pk.FkKeyword)
-        .Include(p => p.PlayerThemes)
-            .ThenInclude(pt => pt.FkTheme)
-        .Select(p => new PlayerParticipateDto
-        {
-            PlayerId = p.PlayerId,
-            Nickname = p.Nickname,
-            Birthdate = p.Birthdate,
-            PlayerKeywords = p.PlayerKeywords
-                .Select(pk => new PlayerKeywordDto
+            return context.Players
+                .Include(p => p.PlayerKeywords)
+                    .ThenInclude(pk => pk.FkKeyword)
+                .Include(p => p.PlayerThemes)
+                    .ThenInclude(pt => pt.FkTheme)
+
+                .Select(p => new PlayerParticipateDto
                 {
-                    Name = pk.FkKeyword.KeywordName,
-                    Note = pk.KeywordNote
-                })
-                .ToList(),
-            PlayerThemes = p.PlayerThemes
-                .Select(pt => new PlayerThemeDto
-                {
-                    Name = pt.FkTheme.ThemeName,
-                    Note = pt.ThemeNote
-                })
-                .ToList()
-            // FkEvents - projeter ces données comme nécessaire
-        }).ToList();
+                    PlayerId = p.PlayerId, // player Id
+                    Nickname = p.Nickname, // player nickname
+                    Birthdate = p.Birthdate, // player Birthdate
+                    // les keyword et leurs cotes
+                    PlayerKeywords = p.PlayerKeywords
+                        .Select(pk => new PlayerKeywordDto
+                        {
+                            Name = pk.FkKeyword.KeywordName,
+                            Note = pk.KeywordNote
+                        })
+                        .ToList(),
+                    // les themes et leurs cotes
+                    PlayerThemes = p.PlayerThemes
+                        .Select(pt => new PlayerThemeDto
+                        {
+                            Name = pt.FkTheme.ThemeName,
+                            Note = pt.ThemeNote
+                        })
+                        .ToList(),
+                    // Les jeux qui lui appartiennent
+                    PlayerGames = p.PlayerGames
+                    .Select(pg => new PlayerGameDto
+                    {
+                        Name = pg.FkGame.GameName,
+                        Number = pg.NumberPossessed,
+                        Eligible = pg.Eligible
+                    })
+                    .ToList(),
+                    // Les events auxquels il participe
+                    Events = p.FkEvents
+                    .Select(e => e.EventId)
+                    .ToList(),
+                }).ToList();
         }
     }
 }
