@@ -1,4 +1,5 @@
-﻿using lutoftheque.api.Services;
+﻿using lutoftheque.api.Dto;
+using lutoftheque.api.Services;
 using lutoftheque.Entity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,5 +31,53 @@ namespace lutoftheque.api.Controllers
             var eventItem = _eventService.GetEventById(id);
             return Ok(eventItem);
         }
+        [HttpPost]
+        public IActionResult Create(EventToCreateDto eventCreated)
+        {
+            if (eventCreated == null || !ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _eventService.CreateEvent(eventCreated.StartTime, eventCreated.EndTime, eventCreated.FkOrganizerId);
+                return Ok("Evennement créé");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "erreur Interne");
+            }
+
+        }
+        [HttpPut("{eventId:int}")]
+        public IActionResult Update(int eventId, EventLightDto eventItem) 
+        
+        {
+
+            if (eventItem == null)
+            {
+                return BadRequest("Cet evènement n'existe pas");
+            }
+
+            if (eventItem.EventId != eventId)
+            {
+                return BadRequest("l'ID de l'évènement ne correspond pas"); // mais je vois pas quand ça peut arriver
+            }
+
+            var eventToUpdate = new Event
+            {
+                EventId = eventId,
+                StartTime = eventItem.StartTime,
+                EndTime = eventItem.EndTime,
+            };
+
+            if (_eventService.UpdateEvent(eventToUpdate)) 
+            { 
+                return NoContent();
+            }
+            return NotFound();
+        }
+
     }
 }

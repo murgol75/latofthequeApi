@@ -50,12 +50,42 @@ namespace lutoftheque.api.Services
                     .ToList(),
                 AvailableGames = eventItem.FkPlayers
                     .SelectMany(p => p.PlayerGames)
+                    .Where(pg => pg.Eligible)
                     .Select(pg => pg.FkGame.GameName)
                     .ToList(),
             };
 
             return eventFullDto;
         }
+
+        public void CreateEvent(DateTime start, DateTime end, int id)
+        {
+            var newEvent = new Event
+            {
+                StartTime = start,
+                EndTime = end,
+                FkOrganizerId = id,
+
+            };
+
+            context.Events.Add(newEvent);
+            context.SaveChanges();
+        }
+        public EventLightDto UpdateEvent(EventLightDto eventToUpdate)
+        {
+
+            var existingEvent = context.Events.FirstOrDefault(e => e.EventId == eventToUpdate.EventId);
+            
+            // Mettre à jour les propriétés de existingEvent avec celles de eventToUpdate
+            existingEvent.StartTime = eventToUpdate.StartTime;
+            existingEvent.EndTime = eventToUpdate.EndTime;
+            // Mettez à jour d'autres propriétés si nécessaire
+
+            context.SaveChanges();
+
+            return eventToUpdate; // Ou mapper existingEvent à un DTO si nécessaire
+        }
+
 
     }
 }

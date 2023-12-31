@@ -18,4 +18,11 @@ namespace lutoftheque.api.Dto
         public List<string>? ParticipatingPlayers { get; set; }
         public List<string>? AvailableGames { get; set; }
     }
+    public class EventToCreateDto
+    {
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
+        public int FkOrganizerId { get; set; }
+    }
+
 }
