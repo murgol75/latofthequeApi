@@ -1,8 +1,12 @@
 ﻿using lutoftheque.api.Dto;
 using lutoftheque.Entity.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Net;
 using System.Reflection.Metadata;
+using System.Runtime.Intrinsics.X86;
 using System.Text;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace lutoftheque.api.Services
 {
@@ -10,13 +14,17 @@ namespace lutoftheque.api.Services
     {
         //private readonly lutofthequeContext context; : Déclare une variable privée context de type lutofthequeContext.Le mot-clé readonly indique que cette variable ne peut être assignée qu'au moment de la création de l'objet GameService et pas après.
         private readonly lutofthequeContext context;
+        private readonly EventService _eventService;
 
         //Ce constructeur prend un paramètre context de type lutofthequeContext et l'assigne à la variable context de la classe.
         public GameService (lutofthequeContext context)
         {
             //this.context = context; : this est utilisé pour faire la distinction entre le paramètre context et la variable de classe context.
             this.context = context;
+            
          }
+
+
         // public List<Game> GetGames() : Déclare une méthode publique GetGames qui retourne une liste d'objets Game.
         public List<GameDto> GetGames()
         {
@@ -82,6 +90,7 @@ namespace lutoftheque.api.Services
                     Picture = g.Picture
                 }).ToList();
         }
+
 
     }
 }
