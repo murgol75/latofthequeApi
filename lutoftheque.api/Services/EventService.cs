@@ -18,7 +18,7 @@ namespace lutoftheque.api.Services
         public List<EventLightDto> GetEvents()
         {
             return context.Events
-                .Select(e => new EventLightDto
+                .Select(e => new EventLightDto // select 
                 {
                     EventId = e.EventId,
                     StartTime = e.StartTime,
@@ -71,19 +71,35 @@ namespace lutoftheque.api.Services
             context.Events.Add(newEvent);
             context.SaveChanges();
         }
-        public EventLightDto UpdateEvent(EventLightDto eventToUpdate)
+        public bool UpdateEvent(EventLightDto eventToUpdate)
         {
 
             var existingEvent = context.Events.FirstOrDefault(e => e.EventId == eventToUpdate.EventId);
+
+            if(existingEvent == null)
+            {
+                return false;
+            }
             
-            // Mettre à jour les propriétés de existingEvent avec celles de eventToUpdate
             existingEvent.StartTime = eventToUpdate.StartTime;
             existingEvent.EndTime = eventToUpdate.EndTime;
-            // Mettez à jour d'autres propriétés si nécessaire
 
             context.SaveChanges();
 
-            return eventToUpdate; // Ou mapper existingEvent à un DTO si nécessaire
+            return true;
+        }
+
+        public bool DeleteEvent(int id)
+        {
+            var eventToDelete = context.Events.FirstOrDefault(e => e.EventId == id);
+            if (eventToDelete == null)
+            {
+                return false; // Événement non trouvé
+            }
+
+            context.Events.Remove(eventToDelete);
+            context.SaveChanges();
+            return true; // Suppression réussie
         }
 
 

@@ -50,6 +50,7 @@ namespace lutoftheque.api.Controllers
             }
 
         }
+
         [HttpPut("{eventId:int}")]
         public IActionResult Update(int eventId, EventLightDto eventItem) 
         
@@ -65,7 +66,7 @@ namespace lutoftheque.api.Controllers
                 return BadRequest("l'ID de l'évènement ne correspond pas"); // mais je vois pas quand ça peut arriver
             }
 
-            var eventToUpdate = new Event
+            var eventToUpdate = new EventLightDto
             {
                 EventId = eventId,
                 StartTime = eventItem.StartTime,
@@ -74,9 +75,18 @@ namespace lutoftheque.api.Controllers
 
             if (_eventService.UpdateEvent(eventToUpdate)) 
             { 
-                return NoContent();
+                return NoContent(); 
             }
             return NotFound();
+        }
+        [HttpDelete("{eventId:int}")]
+        public IActionResult Delete(int eventId)
+        {
+            if (_eventService.DeleteEvent(eventId))
+            {
+                return NoContent(); // Suppression réussie
+            }
+            return NotFound(); // Événement non trouvé
         }
 
     }
