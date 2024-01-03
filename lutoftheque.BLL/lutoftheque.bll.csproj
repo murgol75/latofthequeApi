@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\lutoftheque.api\lutoftheque.api.csproj" />
+    <ProjectReference Include="..\lutoftheque.Entity\lutoftheque.Entity.csproj" />
+  </ItemGroup>
+
 </Project>

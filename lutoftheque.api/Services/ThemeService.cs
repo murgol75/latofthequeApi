@@ -2,32 +2,31 @@
 
 namespace lutoftheque.api.Services
 {
-    public class KeywordService
+    public class ThemeService
     {
-
-        // déclaration du context lutoftheque dans la variable context. (_ devant context car private)
         private readonly lutofthequeContext _context;
 
         // Constructeur avec context de type lutofthequeContext.
-        public KeywordService(lutofthequeContext context)
+        public ThemeService(lutofthequeContext context)
         {
             //le _context dans cette classe est égal au context ajouté en paramètre.
             this._context = context;
         }
         // Déclaration de la méthode GetKeywords qui retourne la liste de tous les objets Keyword.
-        public List<Keyword> GetKeywords()
+        public List<Theme> GetThemes()
         {
             //On return tous les keyword qui sont dans le context DB, ToList() convertit le résultat en une liste d'objets Keyword
 
-            return _context.Keywords.ToList();
+            return _context.Themes.ToList();
         }
 
-        public List<string> GetKeywordsName()
+        public List<string> GetThemesName()
         {
             return _context
-                .Keywords
-                .Select(k => k.KeywordName)
+                .Themes
+                .Select(k => k.ThemeName)
                 .ToList();
         }
     }
 }
+

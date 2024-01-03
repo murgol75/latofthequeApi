@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-// evite la recursivité lors des appels api
+// evite la recursivité lors des appels api avec Entity Framework
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
@@ -25,6 +25,7 @@ builder.Services.AddDbContext<lutofthequeContext>(opts => opts.UseSqlServer(luto
 builder.Services.AddTransient<PlayerService>();
 builder.Services.AddTransient<GameService>();
 builder.Services.AddTransient<EventService>();
+
 
 var app = builder.Build();
 
