@@ -8,18 +8,16 @@ namespace lutoftheque.api.Services
     {
         //private readonly lutofthequeContext context; : Déclare une variable privée context de type lutofthequeContext.Le mot-clé readonly indique que cette variable ne peut être assignée qu'au moment de la création de l'objet GameService et pas après.
         private readonly lutofthequeContext context;
-        private readonly EventService _eventService;
-        private readonly PlayerService _playerService;
-        private readonly KeywordService _keywordService;
+        //private readonly PlayerService _playerService;
+        //private readonly KeywordService _keywordService;
 
         //Ce constructeur prend un paramètre context de type lutofthequeContext et l'assigne à la variable context de la classe.
         public EventService(lutofthequeContext context)
         {
             //this.context = context; : this est utilisé pour faire la distinction entre le paramètre context et la variable de classe context.
             this.context = context;
-            this._eventService = _eventService;
-            this._playerService = _playerService;
-            this._keywordService = _keywordService;
+            //this._playerService = _playerService;
+            //this._keywordService = _keywordService;
         }
         public List<EventLightDto> GetEvents()
         {

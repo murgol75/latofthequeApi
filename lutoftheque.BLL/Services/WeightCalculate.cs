@@ -29,7 +29,7 @@ namespace lutoftheque.bll.Services
         }
         public List<ThemeWeight> CreateThemeWeightList()
         {
-            List<string> themes = _themeService.GetThemesName(); // Récupère les noms des mots-clés
+            List<string> themes = _themeService.GetThemesName(); // Récupère les noms des themes
             List<ThemeWeight> themeWeight = themes
                 .Select(themeName => new ThemeWeight(themeName))
                 .ToList();

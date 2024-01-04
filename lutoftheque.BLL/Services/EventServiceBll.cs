@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using lutoftheque.api.Dto;
@@ -8,6 +9,7 @@ using lutoftheque.api.Services;
 using lutoftheque.bll.models;
 using lutoftheque.Entity.Models;
 using Microsoft.EntityFrameworkCore;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace lutoftheque.bll.Services
 {
@@ -19,6 +21,7 @@ namespace lutoftheque.bll.Services
         private readonly PlayerService _playerService;
         private readonly KeywordService _keywordService;
         private readonly WeightCalculate _weightCalculate;
+        private readonly SearchGames _searchGames;
 
 
         //Ce constructeur prend un paramètre context de type lutofthequeContext et l'assigne à la variable context de la classe.
@@ -32,7 +35,7 @@ namespace lutoftheque.bll.Services
             this._weightCalculate = _weightCalculate;
         }
 
-        public List<GameDto> ChooseGames(int id)
+        public List<GameLightDto> ChooseGames(int id)
         {
             //declaration des variables
             List<int> playersAge = new List<int>(); // la liste avec l'age de tous les joueurs
@@ -48,6 +51,10 @@ namespace lutoftheque.bll.Services
 
             // Récupérer la liste des joueurs de cet évènement
             List<PlayerByEventDto> players = _playerService.GetPlayersByEvent(id);
+
+            //récuperer le nombre de joueurs
+
+            int numberOfPlayers = players.Count;
 
             //Calculer l'age de chaque joueur et en extraire le plus jeune
 
@@ -109,26 +116,26 @@ namespace lutoftheque.bll.Services
                     {
                         if (playerTheme.Name == theme.Name)
                         {
-                            int keywordBonus = 0;
+                            int themeBonus = 0;
                             switch (playerTheme.Note)
                             {
                                 case 1:
-                                    keywordBonus = -5;
+                                    themeBonus = -5;
                                     break;
                                 case 2:
-                                    keywordBonus = -2;
+                                    themeBonus = -2;
                                     break;
                                 case 4:
-                                    keywordBonus = 2;
+                                    themeBonus = 2;
                                     break;
                                 case 5:
-                                    keywordBonus = 5;
+                                    themeBonus = 5;
                                     break;
                                 default:
-                                    keywordBonus = 0;
+                                    themeBonus = 0;
                                     break;
                             }
-                            theme.Weight += keywordBonus;
+                            theme.Weight += themeBonus;
                         }
                     }
                 }
@@ -138,84 +145,124 @@ namespace lutoftheque.bll.Services
 
             //Récupérer les 3 mots - clés les plus lourds
 
+            List<string> topTroisKeywords = keywords
+                .OrderByDescending(kw => kw.Weight)
+                .Take(3)
+                .Select(kw => kw.Name)
+                .ToList();
 
+            // récupérer la liste des jeux éligibles
+            var eligibleGames = players
+                .SelectMany(p => p.PlayerGames)
+                .Where(pg => pg.Eligible)
+                .Select(pg => pg.Name)
+                .Distinct()
+                .ToList();
 
+            // filtrer les jeux selon ces critères : 
+            // ageMin > age du plus jeune joueur
+            // nombreJoueurMax > nombreJoueurs participants
+            // nombreJoueurMin < nombreJoueurs participants
+            // AverageDuration < EventDuration
+            // un de ses mots clé est un des 3 mots - clés les plus lourds
 
+            var filteredGames = context.Games
+                .Where(g => eligibleGames.Contains(g.GameName) &&
+                g.AgeMin <= youngest &&
+                g.PlayersMin <= numberOfPlayers &&
+                g.PlayersMax >= numberOfPlayers &&
+                g.AverageDuration <= durationInMinuts &&
+                g.FkKeywords.Any(kw => topTroisKeywords.Contains(kw.KeywordName)))
+                .ToList();
 
+            List<GameWithWeightDto> gameDtos = filteredGames
+                .Select(g => new GameWithWeightDto
+                    {
+                    GameId = g.GameId,
+                    GameName = g.GameName,
+                    PlayersMin = g.PlayersMin,
+                    PlayersMax = g.PlayersMax,
+                    AverageDuration = g.AverageDuration,
+                    AgeMin = g.AgeMin,
+                    Picture = g.Picture,
+                    FkTheme = g.FkTheme.ThemeName,
+                    FkKeywords = g.FkKeywords.Select(k => k.KeywordName).ToList(),
+                    FkSecondaryThemes = g.FkSecondaryThemes.Select(st => st.ThemeName).ToList(),
+                    Weight = 0
+                    })
+                .ToList();
 
-            //Récupéré les jeux des joueurs présents(nom, agemin, joueursMin, joueursMax, AverageDuration, keyword, themes) avec les critères suivants :
-            //ageMin > age du plus jeune joueur
-            //nombreJoueurMax > nombreJoueurs participants
-            //nombreJoueurMin < nombreJoueurs participants
-            //AverageDuration < EventDuration
-            //un de ses mots clé est un des 3 mots - clés les plus lourds
+            //Calculer le score de chaque jeux selon le poids des mot-clés + le poids des themes /100 (penser à en faire un double
 
+            // foreach filtered games // foreach keyword puis foreach theme totalWeight
 
+            foreach (GameWithWeightDto game in gameDtos)
+            {
+                foreach (string gameKeyword in game.FkKeywords)
+                {
+                    foreach(KeywordWeight keyword in keywords)
+                    {
+                        if (gameKeyword == keyword.Name)
+                        { 
+                            game.Weight += keyword.Weight;
+                        }
+                    }
+                }
+                // pour chaque theme dans la liste des themes existants, si le theme du jeu = le theme de la liste alors on ajoute et à la fin c'est /100 
+                foreach(ThemeWeight theme in themes)
+                {
+                    if (theme.Name == game.FkTheme)
+                    {
+                        game.Weight += theme.Weight/100;
+                    }
+                }
+            }
 
+            // trouver les 2 jeux dont le poids total est le plus haut pour le premier mot clé (topTroisKeyword[0]) et les ajouter  à la liste des jeux choisis et les supprimer de la liste des jeux eligibles
 
+            // creer une liste de jeux choisis (vide bien sur) chercher le jeu le plus lourd avec le 1er mot clé, l'ajouter à la liste de jeux choisis et le supprimer de la liste de base... faire ça 2 fois
 
+            List<GameWithWeightDto> choosenGames = new List<GameWithWeightDto>();
 
-            //Calculer le score de chaque jeux selon le poids des mot-clés + le poids des themes / 100
+            List<GameWithWeightDto> searchInGames = gameDtos;
 
+            
 
+            for (int i = 0; i<2;i++)
+            {
+                // je recupère la liste des jeux avec le keyword spécifique
+                List<GameWithWeightDto> specificKeywordGames = _searchGames.SearchGamesWithIndexedKeyword(gameDtos, topTroisKeywords, i);
 
+                // j'extrais les 2 jeux les plus lourds avec ce mot clé
+                List<GameWithWeightDto> twoHaviest = _searchGames.getTopTwoHaviestGames(specificKeywordGames);
 
+                // j'ajoute les 2 jeux trouvés à la liste finale
 
+                choosenGames.AddRange(twoHaviest);
 
-            //prendre les 2 jeux qui ont le plus de points avec le mot clé le plus lord
+                // je supprime les 2 jeux de la liste de base
 
+                foreach (var game in twoHaviest)
+                {
+                    gameDtos.Remove(game);
+                }
 
+            }
 
+            //mapper choosenGames en GameLightDto
 
+            List<GameLightDto> finalChoice = choosenGames
+                .Select(g => new GameLightDto
+                {
+                    GameId = g.GameId,
+                    GameName = g.GameName,
+                    Picture = g.Picture
+                })
+                .ToList();
 
+            // Et en théorie j'ai mes 6 jeux
 
-            //les Mettre dans la liste des jeux choisis et les supprimer de la liste des jeux à choisir
-
-
-
-
-
-
-            //prendre les 2 jeux qui ont le plus de points avec le 2ème mot clé le plus lourd
-
-
-
-
-
-
-            //les Mettre dans la liste des jeux choisis et les supprimer de la liste des jeux à choisir
-
-
-
-
-
-
-            //prendre les 2 jeux qui ont le plus de points avec le 3ème mot clé le plus lourd
-
-
-
-
-
-
-            //les Mettre dans la liste des jeux choisis
-
-
-
-
-
-
-            //Afficher les 6 jeux choisis
-
-
-
-
-
-
-
-            return null; // en attendant de définir le bon retour
-
+            return finalChoice; 
         }
-
-
     }
 }

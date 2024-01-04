@@ -80,6 +80,29 @@ namespace lutoftheque.api.Services
             return gameFullDto;
         }
 
+        public List<GameFullDto> GetGamesForActualEvent(int eventId)
+        {
+            return context.Games
+                .Include(g => g.FkTheme)
+                .Include(g => g.FkKeywords)
+                .Include(g => g.FkSecondaryThemes)
+                .Select(g => new GameFullDto
+                {
+                    GameId = g.GameId,
+                    GameName = g.GameName,
+                    PlayersMin = g.PlayersMin,
+                    PlayersMax = g.PlayersMax,
+                    AverageDuration = g.AverageDuration,
+                    AgeMin = g.AgeMin,
+                    FkTheme = g.FkTheme.ThemeName,
+                    FkKeywords = g.FkKeywords.Select(k => k.KeywordName).ToList(),
+                    FkSecondaryThemes = g.FkSecondaryThemes.Select(st => st.ThemeName).ToList()
+                }).ToList();
+        }
+
+
+
+
         public List<GameLightDto> GetGamesForEvent()
         {
             return context.Games

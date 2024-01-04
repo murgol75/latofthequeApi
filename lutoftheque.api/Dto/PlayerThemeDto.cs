@@ -3,6 +3,6 @@
     public class PlayerThemeDto
     {
         public string? Name { get; set; }
-        public int? Note { get; set; }
+        public double? Note { get; set; }
     }
 }
