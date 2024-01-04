@@ -15,7 +15,7 @@ namespace lutoftheque.api.Controllers
         {
             _playerService = playerService;
         }
-        [HttpGet]
+        [HttpGet("Get All Players")]
         public ActionResult<List<Player>> Get()
         {
             var players = _playerService.GetPlayers();
@@ -23,12 +23,12 @@ namespace lutoftheque.api.Controllers
             return Ok(players);
         }
 
-    [HttpGet("{id}")]
-    public ActionResult<List<Player>> GetPlayerByEventId(int id)
-    {
-        var players = _playerService.GetPlayersByEvent(id);
+        [HttpGet("Get All Players in an Event {eventId}")]
+        public ActionResult<List<Player>> GetPlayerByEventId(int eventId)
+        {
+            var players = _playerService.GetPlayersByEvent(eventId);
 
-        return Ok(players);
-    }
+            return Ok(players);
+        }
     }
 }

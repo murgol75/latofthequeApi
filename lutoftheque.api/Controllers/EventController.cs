@@ -3,6 +3,7 @@ using lutoftheque.api.Services;
 using lutoftheque.Entity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using lutoftheque.bll.Services;
 
 namespace lutoftheque.api.Controllers
 {
@@ -11,27 +12,29 @@ namespace lutoftheque.api.Controllers
     public class EventController : ControllerBase
     {
         private readonly EventService _eventService;
+        private readonly EventServiceBll eventServiceBll;
 
         // Le constructeur reçoit le service GameService via l'injection de dépendances.
         public EventController(EventService eventService)
         {
             _eventService = eventService;
+            _eventServiceBll = eventServiceBll;
         }
 
-        [HttpGet]
+        [HttpGet("Recupère tous les events")]
         public ActionResult<List<Event>> Get()
         {
-            var games = _eventService.GetEvents();
+            var events = _eventService.GetEvents();
 
-            return Ok(games);
+            return Ok(events);
         }
-        [HttpGet("{id}")]
+        [HttpGet("GetEventById {id}")]
         public ActionResult<Event> Get(int id)
         {
             var eventItem = _eventService.GetEventById(id);
             return Ok(eventItem);
         }
-        [HttpPost]
+        [HttpPost("Create Event")]
         public IActionResult Create(EventToCreateDto eventCreated)
         {
             if (eventCreated == null || !ModelState.IsValid)
@@ -51,7 +54,7 @@ namespace lutoftheque.api.Controllers
 
         }
 
-        [HttpPut("{eventId:int}")]
+        [HttpPut("Update Event {eventId:int}")]
         public IActionResult Update(int eventId, EventLightDto eventItem) 
         
         {
@@ -79,7 +82,7 @@ namespace lutoftheque.api.Controllers
             }
             return NotFound();
         }
-        [HttpDelete("{eventId:int}")]
+        [HttpDelete("Delete Event {eventId:int}")]
         public IActionResult Delete(int eventId)
         {
             if (_eventService.DeleteEvent(eventId))
@@ -88,6 +91,12 @@ namespace lutoftheque.api.Controllers
             }
             return NotFound(); // Événement non trouvé
         }
+        [HttpGet("GetGamesForEvent {eventId}")]
 
+        public IActionResult Get(int eventId)
+        {
+                var choosenGames = _eventServiceBll
+                return Ok(eventItem);
+        }
     }
 }
