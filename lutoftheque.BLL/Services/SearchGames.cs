@@ -1,15 +1,17 @@
-﻿using lutoftheque.api.Dto;
+﻿using lutoftheque.bll.models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace lutoftheque.bll.Services
 {
 
-    public class SearchGames
+    public class SearchGames  
     {
+        // methode pour chercher des jeux qui comportent le motclé TopThreeKeywords indexé
         public List<GameWithWeightDto> SearchGamesWithIndexedKeyword(List<GameWithWeightDto> games, List<string> topThreeKeywords, int keywordIndex)
         {
             if (topThreeKeywords.Count > keywordIndex)
@@ -25,38 +27,19 @@ namespace lutoftheque.bll.Services
             return new List<GameWithWeightDto>(); // Retourne une liste vide si l'index est hors limites
         }
 
-        // créer la méthode qui va prendre le jeu le plus lourd dans la liste ci-dessus
+        // méthode qui va prendre les 2 jeux les plus lourds dans la liste ci-dessus
         public List<GameWithWeightDto> getTopTwoHaviestGames(List<GameWithWeightDto> games)
         {
+            // si la liste est nulle (il n'y a rien dans la liste), on ne renvoie rien (déjà traité)
             if (games == null || !games.Any())
             {
                 return new List<GameWithWeightDto>(); // Retourne une liste vide si la liste est vide ou null
             }
 
-            return games.OrderByDescending(g => g.Weight).Take(2).ToList();
+            List <GameWithWeightDto> gamesList = games.OrderByDescending(g => g.Weight).Take(2).ToList();
+
+            return gamesList.OrderByDescending(g => g.Weight).Take(2).ToList();
         }
-
-        //// créer la méthode qui va ajouter le jeu trouvé ci-dessus dans la liste des jeux finaux
-
-        //public List<GameWithWeightDto> addGameToChoosenList(List<GameWithWeightDto> newList, List<GameWithWeightDto> games)
-        //{
-        //    newList.AddRange(games);
-
-        //    return newList;
-
-        //}
-
-        // créer la méthode qui va supprimer le jeu trouvé ci-dessus de la liste des jeux eligibles
-
-        //public List<GameWithWeightDto> deleteGameFromEligibleList(List<GameWithWeightDto> fullList, List<GameWithWeightDto> games)
-        //{
-        //    foreach (var game in games)
-        //    {
-        //        fullList.Remove(game);
-        //    }
-        //    return fullList;
-
-        //}
 
     }
 }

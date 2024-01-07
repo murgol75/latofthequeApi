@@ -4,6 +4,7 @@ using lutoftheque.Entity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using lutoftheque.bll.Services;
+using lutoftheque.api.Mappers;
 
 namespace lutoftheque.api.Controllers
 {
@@ -12,10 +13,9 @@ namespace lutoftheque.api.Controllers
     public class EventController : ControllerBase
     {
         private readonly EventService _eventService;
-        private readonly EventServiceBll eventServiceBll;
+        private readonly EventServiceBll _eventServiceBll;
 
-        // Le constructeur reçoit le service GameService via l'injection de dépendances.
-        public EventController(EventService eventService)
+        public EventController(EventService eventService, EventServiceBll eventServiceBll)
         {
             _eventService = eventService;
             _eventServiceBll = eventServiceBll;
@@ -25,7 +25,6 @@ namespace lutoftheque.api.Controllers
         public ActionResult<List<Event>> Get()
         {
             var events = _eventService.GetEvents();
-
             return Ok(events);
         }
         [HttpGet("GetEventById {id}")]
@@ -34,31 +33,32 @@ namespace lutoftheque.api.Controllers
             var eventItem = _eventService.GetEventById(id);
             return Ok(eventItem);
         }
+
         [HttpPost("Create Event")]
         public IActionResult Create(EventToCreateDto eventCreated)
         {
-            if (eventCreated == null || !ModelState.IsValid)
+            if (eventCreated == null || !ModelState.IsValid) // si le formulaire n'existe pas ou que le modèle n'est pas bien remplis, on renvoie une BadRequest
             {
                 return BadRequest();
             }
-
+            // sinon on essaye de le poster
             try
             {
                 _eventService.CreateEvent(eventCreated.StartTime, eventCreated.EndTime, eventCreated.FkOrganizerId);
                 return Ok("Evennement créé");
             }
-            catch (Exception ex)
+            //et si on y arrive pas, on ressort une exception
+            catch (Exception ex) // ex reçoit les détails de l'erreur... à utiliser quand je gèrerai les exceptions
             {
                 return StatusCode(500, "erreur Interne");
             }
-
         }
 
         [HttpPut("Update Event {eventId:int}")]
         public IActionResult Update(int eventId, EventLightDto eventItem) 
         
         {
-
+            
             if (eventItem == null)
             {
                 return BadRequest("Cet evènement n'existe pas");
@@ -82,6 +82,7 @@ namespace lutoftheque.api.Controllers
             }
             return NotFound();
         }
+
         [HttpDelete("Delete Event {eventId:int}")]
         public IActionResult Delete(int eventId)
         {
@@ -91,12 +92,13 @@ namespace lutoftheque.api.Controllers
             }
             return NotFound(); // Événement non trouvé
         }
-        [HttpGet("GetGamesForEvent {eventId}")]
 
-        public IActionResult Get(int eventId)
+        [HttpGet("GetGamesForEvent {eventId}")]
+        public IActionResult GetChoosenGames(int eventId)
         {
-                var choosenGames = _eventServiceBll
-                return Ok(eventItem);
+            IEnumerable<GameLightDto>? games = _eventServiceBll.ChooseGamesBll(eventId).Select(g => g.ToDTO());
+            
+            return Ok(games);
         }
     }
 }

@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lutoftheque.bll.models
+namespace lutofthequee.bll.Models
 {
-    public class ThemeWeight
+    public class KeywordWeight
     {
         public string Name { get; set; }
-        public double Weight { get; set; }
+        public int Weight { get; set; }
 
-        public ThemeWeight(string name)
+        public KeywordWeight(string name)
         {
             Name = name;
             Weight = 0;

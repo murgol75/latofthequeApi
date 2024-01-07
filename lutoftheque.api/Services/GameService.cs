@@ -14,18 +14,14 @@ namespace lutoftheque.api.Services
     {
         //private readonly lutofthequeContext context; : Déclare une variable privée context de type lutofthequeContext.Le mot-clé readonly indique que cette variable ne peut être assignée qu'au moment de la création de l'objet GameService et pas après.
         private readonly lutofthequeContext context;
-        private readonly EventService _eventService;
 
         //Ce constructeur prend un paramètre context de type lutofthequeContext et l'assigne à la variable context de la classe.
         public GameService (lutofthequeContext context)
         {
             //this.context = context; : this est utilisé pour faire la distinction entre le paramètre context et la variable de classe context.
             this.context = context;
-            
          }
 
-
-        // public List<Game> GetGames() : Déclare une méthode publique GetGames qui retourne une liste d'objets Game.
         public List<GameDto> GetGames()
         {
             return context.Games
@@ -48,18 +44,18 @@ namespace lutoftheque.api.Services
 
         public GameFullDto? GetGameById(int id)
         {
-            var game = context.Games
-                .Include(g => g.FkTheme)
-                .Include(g => g.FkKeywords)
-                .Include(g => g.FkSecondaryThemes)
-                .FirstOrDefault(g => g.GameId == id);
+            Game? game = context.Games  // recupère le Jeu
+                .Include(g => g.FkTheme)  // en incluant le theme
+                .Include(g => g.FkKeywords) // et les keywords
+                .Include(g => g.FkSecondaryThemes) // et les secondary themes
+                .FirstOrDefault(g => g.GameId == id); // le premier qu'il trouve dont l'id == l'id en parametre
 
             if (game == null)
             {
                 return null;
             }
 
-            var gameFullDto = new GameFullDto
+            GameFullDto gameFullDto = new GameFullDto
             {
                 GameId = game.GameId,
                 GameName = game.GameName,
@@ -100,9 +96,6 @@ namespace lutoftheque.api.Services
                 }).ToList();
         }
 
-
-
-
         public List<GameLightDto> GetGamesForEvent()
         {
             return context.Games
@@ -113,7 +106,5 @@ namespace lutoftheque.api.Services
                     Picture = g.Picture
                 }).ToList();
         }
-
-
     }
 }

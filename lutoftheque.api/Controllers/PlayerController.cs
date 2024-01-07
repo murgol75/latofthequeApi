@@ -10,11 +10,11 @@ namespace lutoftheque.api.Controllers
     public class PlayerController : ControllerBase
     {
         private readonly PlayerService _playerService;
-
         public PlayerController(PlayerService playerService)
         {
             _playerService = playerService;
         }
+
         [HttpGet("Get All Players")]
         public ActionResult<List<Player>> Get()
         {

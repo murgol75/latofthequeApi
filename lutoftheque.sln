@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lutoftheque.Entity", "lutof
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lutoftheque.api", "lutoftheque.api\lutoftheque.api.csproj", "{C2B97D97-B017-4607-9B7D-CEBDFB540C83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lutoftheque.bll", "lutoftheque.bll\lutoftheque.bll.csproj", "{40230B3C-4A98-4EF8-BFBA-A8BAEEE0DBE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lutoftheque.bll", "lutoftheque.bll\lutoftheque.bll.csproj", "{40230B3C-4A98-4EF8-BFBA-A8BAEEE0DBE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

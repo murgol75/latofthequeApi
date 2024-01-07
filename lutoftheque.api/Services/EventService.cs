@@ -1,28 +1,25 @@
 ﻿using lutoftheque.api.Dto;
 using lutoftheque.Entity.Models;
 using Microsoft.EntityFrameworkCore;
+using lutoftheque.bll.Services;
 
 namespace lutoftheque.api.Services
 {
     public class EventService
     {
-        //private readonly lutofthequeContext context; : Déclare une variable privée context de type lutofthequeContext.Le mot-clé readonly indique que cette variable ne peut être assignée qu'au moment de la création de l'objet GameService et pas après.
         private readonly lutofthequeContext context;
-        //private readonly PlayerService _playerService;
-        //private readonly KeywordService _keywordService;
+        private readonly EventServiceBll eventServiceBll;
 
         //Ce constructeur prend un paramètre context de type lutofthequeContext et l'assigne à la variable context de la classe.
         public EventService(lutofthequeContext context)
         {
-            //this.context = context; : this est utilisé pour faire la distinction entre le paramètre context et la variable de classe context.
             this.context = context;
-            //this._playerService = _playerService;
-            //this._keywordService = _keywordService;
+            this.eventServiceBll = eventServiceBll;
         }
         public List<EventLightDto> GetEvents()
         {
             return context.Events
-                .Select(e => new EventLightDto // select 
+                .Select(e => new EventLightDto // Mappe l'Event en EvenLightDto
                 {
                     EventId = e.EventId,
                     StartTime = e.StartTime,
@@ -33,18 +30,19 @@ namespace lutoftheque.api.Services
         public EventFullDto? GetEventById(int id)
         {
             // eventItem car event est un mot dédié sur Csharp
-            var eventItem = context.Events
-                .Include(e => e.FkPlayers)
-                    .ThenInclude(p => p.PlayerGames)
-                        .ThenInclude(pg => pg.FkGame)
-                .FirstOrDefault(e => e.EventId == id);
+            var eventItem = context.Events 
+                .Include(e => e.FkPlayers) // pour chaque event, on join les players associés à l'event
+                    .ThenInclude(p => p.PlayerGames) // pour chaque joueur on join également la table de relation joueur possède jeu
+                        .ThenInclude(pg => pg.FkGame) // et on joint les jeux correspondant à la FK Game
+                .FirstOrDefault(e => e.EventId == id); // retourne la première ligne qui correspond à l'eventId qui est égal à l'Id en paramètre
 
             if (eventItem == null)
             {
                 return null;
             }
 
-            var eventFullDto = new EventFullDto
+            // On le mappe pour en faire un EventFullDto
+            EventFullDto eventFullDto = new EventFullDto
             {
                 EventId = eventItem.EventId,
                 StartTime = eventItem.StartTime,
@@ -64,21 +62,20 @@ namespace lutoftheque.api.Services
 
         public void CreateEvent(DateTime start, DateTime end, int id)
         {
-            var newEvent = new Event
+            Event newEvent = new Event
             {
                 StartTime = start,
                 EndTime = end,
                 FkOrganizerId = id,
-
             };
 
-            context.Events.Add(newEvent);
-            context.SaveChanges();
+            context.Events.Add(newEvent); 
+            context.SaveChanges();  // à faire pour enregistrer l'entrée
         }
         public bool UpdateEvent(EventLightDto eventToUpdate)
         {
 
-            var existingEvent = context.Events.FirstOrDefault(e => e.EventId == eventToUpdate.EventId);
+            Event existingEvent = context.Events.FirstOrDefault(e => e.EventId == eventToUpdate.EventId);
 
             if(existingEvent == null)
             {
@@ -95,7 +92,7 @@ namespace lutoftheque.api.Services
 
         public bool DeleteEvent(int id)
         {
-            var eventToDelete = context.Events.FirstOrDefault(e => e.EventId == id);
+            Event eventToDelete = context.Events.FirstOrDefault(e => e.EventId == id);
             if (eventToDelete == null)
             {
                 return false; // Événement non trouvé

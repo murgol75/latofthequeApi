@@ -1,26 +1,33 @@
-﻿using lutoftheque.api.Services;
-using lutoftheque.bll.models;
+﻿using lutoftheque.bll.models;
+using lutoftheque.bll.Services;
+using lutoftheque.Entity.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using lutoftheque.api.Services;
+
 
 
 namespace lutoftheque.bll.Services
 {
     public class WeightCalculate
     {
-        //private readonly lutofthequeContext context;
-        private readonly EventService _eventService;
-        private readonly PlayerService _playerService;
-        private readonly KeywordService _keywordService;
-        private readonly ThemeService _themeService;
+        private readonly lutofthequeContext context;
 
+        public WeightCalculate(lutofthequeContext context)
+        {
+            this.context = context;
+        }
+ 
+        
         public List<KeywordWeight> CreateKeywordWeightList()
-        { 
-        List<string> keywords = _keywordService.GetKeywordsName(); // Récupère les noms des mots-clés
+        {
+            KeywordServiceBll keywordServiceBll = new KeywordServiceBll(context);
+
+            List<string> keywords = keywordServiceBll.GetKeywordsName();
+
             List<KeywordWeight> keywordWeight = keywords
                 .Select(keywordName => new KeywordWeight(keywordName))
                 .ToList();
@@ -29,7 +36,10 @@ namespace lutoftheque.bll.Services
         }
         public List<ThemeWeight> CreateThemeWeightList()
         {
-            List<string> themes = _themeService.GetThemesName(); // Récupère les noms des themes
+            ThemeServiceBll themeServiceBll = new ThemeServiceBll(context);
+
+            List<string> themes = themeServiceBll.GetThemesName();
+
             List<ThemeWeight> themeWeight = themes
                 .Select(themeName => new ThemeWeight(themeName))
                 .ToList();

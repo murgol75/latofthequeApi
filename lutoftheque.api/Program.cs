@@ -1,9 +1,27 @@
 using lutoftheque.api.Services;
+using lutoftheque.bll.Services;
 using lutoftheque.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
+using Serilog;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// mise en place de la journalisation
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
+// configuration de Serilog pour la journalisation
+Log.Logger = new LoggerConfiguration()
+    //.WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Minute) // enregistre le log dans le dossier "logs"
+    .CreateLogger();
+
+builder.Logging.ClearProviders();
+builder.Logging.AddSerilog();
+
 
 // Add services to the container.
 
@@ -25,6 +43,11 @@ builder.Services.AddDbContext<lutofthequeContext>(opts => opts.UseSqlServer(luto
 builder.Services.AddTransient<PlayerService>();
 builder.Services.AddTransient<GameService>();
 builder.Services.AddTransient<EventService>();
+builder.Services.AddScoped<EventServiceBll>();
+builder.Services.AddScoped<PlayerServiceBll>();
+builder.Services.AddScoped<KeywordService>();
+builder.Services.AddScoped<WeightCalculate>();
+
 
 
 var app = builder.Build();

@@ -6,22 +6,18 @@ namespace lutoftheque.api.Services
 {
     public class PlayerService
     {
-        //private readonly lutofthequeContext context; : Déclare une variable privée context de type lutofthequeContext.Le mot-clé readonly indique que cette variable ne peut être assignée qu'au moment de la création de l'objet GameService et pas après.
         private readonly lutofthequeContext context;
-
-        //Ce constructeur prend un paramètre context de type lutofthequeContext et l'assigne à la variable context de la classe.
         public PlayerService(lutofthequeContext context)
         {
-            //this.context = context; : this est utilisé pour faire la distinction entre le paramètre context et la variable de classe context.
             this.context = context;
         }
         public List<PlayerParticipateDto> GetPlayers()
         {
             return context.Players
-                .Include(p => p.PlayerKeywords)
-                    .ThenInclude(pk => pk.FkKeyword)
-                .Include(p => p.PlayerThemes)
-                    .ThenInclude(pt => pt.FkTheme)
+                .Include(p => p.PlayerKeywords) // on join la relation Player Keyword
+                    .ThenInclude(pk => pk.FkKeyword) // on join les keyword par la FkKeyword
+                .Include(p => p.PlayerThemes)  // on join la relation Player Theme
+                    .ThenInclude(pt => pt.FkTheme)  // on join les themes par la FkTheme
 
                 .Select(p => new PlayerParticipateDto
                 {
@@ -62,12 +58,12 @@ namespace lutoftheque.api.Services
         public List<PlayerByEventDto> GetPlayersByEvent(int id)
         {
             return context.Players
-                .Include(p => p.PlayerKeywords)
-                    .ThenInclude(pk => pk.FkKeyword)
-                .Include(p => p.PlayerThemes)
-                    .ThenInclude(pt => pt.FkTheme)
-                .Include(p => p.FkEvents)
-                .Where(p => p.FkEvents.Any(e => e.EventId == id))
+                .Include(p => p.PlayerKeywords)  // on join la table d'association Players Keywords
+                    .ThenInclude(pk => pk.FkKeyword)  // on la relie via la FK Keyword
+                .Include(p => p.PlayerThemes)  // on join la table d'association Players Themes
+                    .ThenInclude(pt => pt.FkTheme)  // on la relie via la FK Theme
+                .Include(p => p.FkEvents)  // on join la Fk Event
+                .Where(p => p.FkEvents.Any(e => e.EventId == id)) // on ne garde que tous les joueurs qui participent à l'event qui correspond à l'ID
                 .Select(p => new PlayerByEventDto
                 {
                     PlayerId = p.PlayerId, // player Id
