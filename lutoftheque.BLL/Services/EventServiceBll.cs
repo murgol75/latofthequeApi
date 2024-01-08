@@ -66,29 +66,49 @@ namespace lutoftheque.bll.Services
 
             return eventFullDto;
         }
-
-        public GameSelectionResult ChooseGamesBll(int id)
+        public GameSelectionResult GetEventInfoToChooseGame(int id)
         {
-            //declaration des variables
-            List<int> playersAge = new List<int>(); // la liste avec l'age de tous les joueurs
-            int youngest = 0; // l'âge du plus jeune
-            DateTime today = DateTime.Today; // date d'aujourd'hui
+            // Récupérer la liste des joueurs de cet évènement
+            // instanciationde l'objet playerServiceBll de type PlayerServiceBll
+            PlayerServiceBll playerServiceBll = new PlayerServiceBll(context);
 
-            // récupérer la durée du jeu le plus court pour vérifier avec la durée de l'évènement
-            List<GameDto> fullGameList = new List<GameDto>();
-            fullGameList = _gameServiceBll.GetGames();
-            int shortestGameDuration = fullGameList.Min(game => game.AverageDuration);
+            // appel de GetPlayersByEvent(id) qui est une méthode dans playersServiceBll pour assigner à players qui est une liste de PlayerByEventDto
+            List<PlayerByEventDto> players = playerServiceBll.GetPlayersByEvent(id);  // EN FAIRE LE TEST UNITAIRE
+
+            // récupérer la liste des jeux éligibles
+
+            // renvoyer à la méthode (à créer) pour EN FAIRE LE TU
+            List<string?> eligibleGames = players
+                .SelectMany(p => p.PlayerGames)  // prends chaque player dans players et en extrait la lise de jeux
+                .Where(pg => pg.Eligible) // seulement si le jeu est eligible
+                .Select(pg => pg.Name) // on en ressort le nom
+                .Distinct() // on évite les doublons
+                .ToList(); // transforme en liste
+                           // Testing  (FAIT): verifier que cette liste n'est pas vide
+            if (eligibleGames == null)
+            {
+                //return new GameSelectionResult { ErrorMessage = "La liste de eligibleGames est null" };
+                _logger.LogInformation("**********La liste de eligibleGames est null");
+                return null;
+
+            }
 
             // récupérer l'évènement actuel (avec joueurs et jeux)
-            EventFullDto ? actualEvent = GetEventById(id);   // TESTING (FAIT) : renvoie bien un event (à faire dans GetEventById)
-            if (actualEvent == null) {
+            EventFullDto? actualEvent = GetEventById(id);   // TESTING (FAIT) : renvoie bien un event (à faire dans GetEventById)
+            if (actualEvent == null)
+            {
                 //return new GameSelectionResult { ErrorMessage = "L'événement spécifié n'existe pas." };
                 _logger.LogInformation("**********L'événement spécifié n'existe pas.");
                 return null;
 
             };
 
-            //_logger.LogInformation("**********La valeur de actualEvent est {actualEvent}", JsonSerializer.Serialize(actualEvent));  // insère une ligne dans le log (je garde ici pour l'exemple.  le ********** me sert à repérer mes lignes dans le log)
+            // récupérer la durée du jeu le plus court pour vérifier avec la durée de l'évènement
+            List<GameDto> fullGameList = new List<GameDto>();
+            fullGameList = _gameServiceBll.GetGames();
+            int shortestGameDuration = fullGameList.Min(game => game.AverageDuration);
+
+
 
             // récupérer la durée de l'evènement puis transformation en minutes
             TimeSpan duration = actualEvent.EndTime - actualEvent.StartTime;
@@ -100,12 +120,29 @@ namespace lutoftheque.bll.Services
                 return null;
             };
 
-            // Récupérer la liste des joueurs de cet évènement
-            // instanciationde l'objet playerServiceBll de type PlayerServiceBll
-            PlayerServiceBll playerServiceBll = new PlayerServiceBll(context);
 
-            // appel de GetPlayersByEvent(id) qui est une méthode dans playersServiceBll pour assigner à players qui est une liste de PlayerByEventDto
-            List<PlayerByEventDto> players = playerServiceBll.GetPlayersByEvent(id);  // EN FAIRE LE TEST UNITAIRE
+
+            return ChooseGamesBll(players, fullGameList, durationInMinuts);
+        }
+
+        
+
+
+        public GameSelectionResult ChooseGamesBll(List<PlayerByEventDto> players, List<GameDto> games, int eventDuration)
+        {
+            //declaration des variables
+            List<int> playersAge = new List<int>(); // la liste avec l'age de tous les joueurs
+            int youngest = 0; // l'âge du plus jeune
+            DateTime today = DateTime.Today; // date d'aujourd'hui
+
+
+            
+
+            //_logger.LogInformation("**********La valeur de actualEvent est {actualEvent}", JsonSerializer.Serialize(actualEvent));  // insère une ligne dans le log (je garde ici pour l'exemple.  le ********** me sert à repérer mes lignes dans le log)
+
+
+
+            
 
             //récuperer le nombre de joueurs
             int numberOfPlayers = players.Count; // TESTING (FAIT) vérifier qu'il y a au moins 1 joueur
@@ -233,23 +270,7 @@ namespace lutoftheque.bll.Services
                 return null;
             };
 
-            // récupérer la liste des jeux éligibles
 
-            // renvoyer à la méthode (à créer) pour EN FAIRE LE TU
-            List<string?> eligibleGames = players
-                .SelectMany(p => p.PlayerGames)  // prends chaque player dans players et en extrait la lise de jeux
-                .Where(pg => pg.Eligible) // seulement si le jeu est eligible
-                .Select(pg => pg.Name) // on en ressort le nom
-                .Distinct() // on évite les doublons
-                .ToList(); // transforme en liste
-                // Testing  (FAIT): verifier que cette liste n'est pas vide
-                if (eligibleGames == null)
-            {
-                //return new GameSelectionResult { ErrorMessage = "La liste de eligibleGames est null" };
-                _logger.LogInformation("**********La liste de eligibleGames est null");
-                return null;
-
-            }
 
             // filtrer les jeux selon ces critères : 
             // ageMin > age du plus jeune joueur
@@ -261,11 +282,11 @@ namespace lutoftheque.bll.Services
             // TODO : Si un joueur a mis 1(-5) en theme, ce jeu ne peut pas sortir
 
             List<GameWithWeightDto> filteredGames = context.Games
-                .Where(g => eligibleGames.Contains(g.GameName) &&
+                .Where(g => games.Contains(g.GameName) &&
                 g.AgeMin <= youngest &&
                 g.PlayersMin <= numberOfPlayers &&
                 g.PlayersMax >= numberOfPlayers &&
-                g.AverageDuration <= durationInMinuts &&
+                g.AverageDuration <= eventDuration &&
                 g.FkKeywords.Any(kw => topTroisKeywords.Contains(kw.KeywordName)))
                 .Select(g => new GameWithWeightDto
                 {

@@ -9,8 +9,8 @@ namespace lutoftheque.bll.Tests
         {
             // arrange
             var games = GamesMock.GetGames();
-            var toto = "";
-            
+            // var players = ...
+            // var events
 
 
             // action (injecter methode)
