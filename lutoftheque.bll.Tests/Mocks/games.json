@@ -1,0 +1,1497 @@
+[
+  {
+    "gameId": 1,
+    "gameName": "Andor",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jeu de cooperation",
+      "jeu de narration",
+      "strategie"
+    ],
+    "fkSecondaryThemes": [
+      "western"
+    ]
+  },
+  {
+    "gameId": 2,
+    "gameName": "Blood Bowl : Team Manager",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 90,
+    "ageMin": 14,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jet de des",
+      "jeu de construction"
+    ],
+    "fkSecondaryThemes": [
+      "transport & voyage"
+    ]
+  },
+  {
+    "gameId": 3,
+    "gameName": "Break In - Chichen Itza",
+    "playersMin": 1,
+    "playersMax": 4,
+    "averageDuration": 90,
+    "ageMin": 12,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de cooperation",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": [
+      "superheros"
+    ]
+  },
+  {
+    "gameId": 4,
+    "gameName": "Burger Quiz Deluxe",
+    "playersMin": 2,
+    "playersMax": 10,
+    "averageDuration": 45,
+    "ageMin": 15,
+    "fkTheme": "culture generale",
+    "fkKeywords": [
+      "jeu d'ambiance",
+      "jeu de connaissances",
+      "jeu d'equipe"
+    ],
+    "fkSecondaryThemes": [
+      "science fiction"
+    ]
+  },
+  {
+    "gameId": 5,
+    "gameName": "Carcassonne",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 40,
+    "ageMin": 8,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jeu de placement",
+      "jeu de pose de tuiles",
+      "strategie"
+    ],
+    "fkSecondaryThemes": [
+      "contemporain"
+    ]
+  },
+  {
+    "gameId": 6,
+    "gameName": "Catane - Star Trek",
+    "playersMin": 3,
+    "playersMax": 4,
+    "averageDuration": 75,
+    "ageMin": 10,
+    "fkTheme": "science fiction",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de construction",
+      "strategie"
+    ],
+    "fkSecondaryThemes": [
+      "horreur"
+    ]
+  },
+  {
+    "gameId": 7,
+    "gameName": "Century - La route des epices",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 45,
+    "ageMin": 8,
+    "fkTheme": "transport & voyage",
+    "fkKeywords": [
+      "deck building",
+      "gestion main/combinaison",
+      "jeu de construction"
+    ],
+    "fkSecondaryThemes": [
+      "futuriste"
+    ]
+  },
+  {
+    "gameId": 8,
+    "gameName": "Century - Merveilles Orientales",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 40,
+    "ageMin": 8,
+    "fkTheme": "Asie",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu de construction",
+      "jeu de placement"
+    ],
+    "fkSecondaryThemes": [
+      "enquete & mystere"
+    ]
+  },
+  {
+    "gameId": 9,
+    "gameName": "Century - Un nouveau monde",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 40,
+    "ageMin": 8,
+    "fkTheme": "transport & voyage",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu de construction",
+      "jeu de placement"
+    ],
+    "fkSecondaryThemes": [
+      "culture generale"
+    ]
+  },
+  {
+    "gameId": 10,
+    "gameName": "Citadelles - 3eme edition",
+    "playersMin": 2,
+    "playersMax": 8,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "draft",
+      "gestion main/combinaison",
+      "guessing : presumer/supposer/deduire"
+    ],
+    "fkSecondaryThemes": [
+      "course"
+    ]
+  },
+  {
+    "gameId": 12,
+    "gameName": "6 qui Surprend!",
+    "playersMin": 2,
+    "playersMax": 10,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": null,
+    "fkKeywords": [
+      "choix simultane",
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 13,
+    "gameName": "7 Wonders",
+    "playersMin": 2,
+    "playersMax": 7,
+    "averageDuration": 30,
+    "ageMin": 10,
+    "fkTheme": "civilisation & mythologie",
+    "fkKeywords": [
+      "choix simultane",
+      "draft",
+      "jeu de construction"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 14,
+    "gameName": "7 Wonders Duel",
+    "playersMin": 2,
+    "playersMax": 2,
+    "averageDuration": 30,
+    "ageMin": 10,
+    "fkTheme": "civilisation & mythologie",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de construction",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 15,
+    "gameName": "City of Horror",
+    "playersMin": 3,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "horreur",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de negociation",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 16,
+    "gameName": "Clank! Legacy - Acquisitions Incorporated",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 105,
+    "ageMin": 14,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "deck building",
+      "draft",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 17,
+    "gameName": "Claustrophobia",
+    "playersMin": 2,
+    "playersMax": 2,
+    "averageDuration": 60,
+    "ageMin": 14,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de pose de tuiles",
+      "programmation"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 18,
+    "gameName": "Cluedo Charleroi 1666",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 75,
+    "ageMin": 8,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "jet de des",
+      "jeu d'ambiance",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 19,
+    "gameName": "Cranium",
+    "playersMin": 4,
+    "playersMax": 10,
+    "averageDuration": 60,
+    "ageMin": 16,
+    "fkTheme": "arts",
+    "fkKeywords": [
+      "jeu d'ambiance",
+      "jeu de connaissances",
+      "jeu d'equipe"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 20,
+    "gameName": "Cthulhu Realms",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 25,
+    "ageMin": 14,
+    "fkTheme": "civilisation & mythologie",
+    "fkKeywords": [
+      "deck building",
+      "gestion main/combinaison",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 21,
+    "gameName": "De l Orc pour les braves",
+    "playersMin": 2,
+    "playersMax": 7,
+    "averageDuration": 40,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 22,
+    "gameName": "Declic !?",
+    "playersMin": 3,
+    "playersMax": 8,
+    "averageDuration": 20,
+    "ageMin": 8,
+    "fkTheme": "culture generale",
+    "fkKeywords": [
+      "choix simultane",
+      "jeu d'ambiance",
+      "jeu de connaissances"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 23,
+    "gameName": "Descent - Voyage dans les tenebres",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 180,
+    "ageMin": 13,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 24,
+    "gameName": "Dice Town",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 45,
+    "ageMin": 8,
+    "fkTheme": "western",
+    "fkKeywords": [
+      "choix simultane",
+      "gestion main/combinaison",
+      "jet de des"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 25,
+    "gameName": "Dominion",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 30,
+    "ageMin": 8,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "deck building",
+      "gestion main/combinaison"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 26,
+    "gameName": "Dungeons & Dragons - Castle Ravenloft",
+    "playersMin": 1,
+    "playersMax": 5,
+    "averageDuration": 60,
+    "ageMin": 12,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 27,
+    "gameName": "Dungeons & Dragons : le jeu de plateau",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 28,
+    "gameName": "Elixir",
+    "playersMin": 3,
+    "playersMax": 8,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu d'ambiance",
+      "jeu de construction"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 29,
+    "gameName": "Enquetes à  New York",
+    "playersMin": 3,
+    "playersMax": 6,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 30,
+    "gameName": "Exit - L Affaire du Mississippi",
+    "playersMin": 1,
+    "playersMax": 4,
+    "averageDuration": 90,
+    "ageMin": 12,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 31,
+    "gameName": "Formula D",
+    "playersMin": 2,
+    "playersMax": 10,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "course",
+    "fkKeywords": [
+      "jet de des",
+      "programmation",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 32,
+    "gameName": "Guardians Chronicles",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 120,
+    "ageMin": 14,
+    "fkTheme": "superheros",
+    "fkKeywords": [
+      "jeu de cooperation"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 33,
+    "gameName": "Hanabi",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 30,
+    "ageMin": 8,
+    "fkTheme": "Asie",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de cooperation",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 34,
+    "gameName": "Hero Realms",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 20,
+    "ageMin": 12,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "deck building",
+      "gestion main/combinaison",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 35,
+    "gameName": "Heroquest : Nouvelle edition",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 90,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 36,
+    "gameName": "Horreur à  Arkham",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 150,
+    "ageMin": 14,
+    "fkTheme": "horreur",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de narration",
+      "programmation"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 37,
+    "gameName": "Jeu de cochons",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 15,
+    "ageMin": 6,
+    "fkTheme": null,
+    "fkKeywords": [
+      "jet de des",
+      "jeu d'ambiance",
+      "stop ou encore"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 38,
+    "gameName": "La Taverne de la Crypte",
+    "playersMin": 3,
+    "playersMax": 5,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 39,
+    "gameName": "La Taverne de la Licorne",
+    "playersMin": 3,
+    "playersMax": 5,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 40,
+    "gameName": "Le ciel interdit",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "transport & voyage",
+    "fkKeywords": [
+      "jeu de construction",
+      "jeu de cooperation",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 41,
+    "gameName": "Le Desert Interdit",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": "transport & voyage",
+    "fkKeywords": [
+      "jeu de construction",
+      "jeu de cooperation",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 42,
+    "gameName": "Le Donjon de Naheulbeuk",
+    "playersMin": 3,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "choix simultane",
+      "jeu d'ambiance",
+      "jeu de cooperation"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 43,
+    "gameName": "Le Grand Dalmuti",
+    "playersMin": 4,
+    "playersMax": 8,
+    "averageDuration": 60,
+    "ageMin": 8,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu d'ambiance",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 44,
+    "gameName": "Le Jeu des Dragons",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 30,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu de construction",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 45,
+    "gameName": "Le Seigneur des Anneaux",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 75,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jeu de cooperation",
+      "jeu de narration",
+      "jeu de pose de tuiles"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 46,
+    "gameName": "Les Aventuriers du Rail",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 45,
+    "ageMin": 8,
+    "fkTheme": "transport & voyage",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu de construction",
+      "jeu de placement"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 47,
+    "gameName": "Les Loups-Garous de Thiercelieux",
+    "playersMin": 8,
+    "playersMax": 18,
+    "averageDuration": 30,
+    "ageMin": 8,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 48,
+    "gameName": "Marvel Heroes",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 120,
+    "ageMin": 12,
+    "fkTheme": "superheros",
+    "fkKeywords": [
+      "jeu de narration",
+      "jeu de placement",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 49,
+    "gameName": "Meeple Land",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": null,
+    "fkKeywords": [
+      "jeu de construction",
+      "jeu de placement",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 50,
+    "gameName": "Mr. Jack",
+    "playersMin": 2,
+    "playersMax": 2,
+    "averageDuration": 30,
+    "ageMin": 9,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de placement",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 51,
+    "gameName": "Munchkin Quest",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 150,
+    "ageMin": 12,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu d'ambiance",
+      "jeu de pose de tuiles"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 52,
+    "gameName": "Paletto",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 15,
+    "ageMin": 6,
+    "fkTheme": null,
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de construction",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 53,
+    "gameName": "Robo Rally",
+    "playersMin": 2,
+    "playersMax": 8,
+    "averageDuration": 30,
+    "ageMin": 12,
+    "fkTheme": "course",
+    "fkKeywords": [
+      "jeu d'ambiance",
+      "programmation",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 54,
+    "gameName": "Rummikub",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 20,
+    "ageMin": 7,
+    "fkTheme": null,
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu de pose de tuiles",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 55,
+    "gameName": "Runewars",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 210,
+    "ageMin": 14,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "choix simultane",
+      "jet de des",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 56,
+    "gameName": "Saboteur - Les mineurs contre-attaquent !",
+    "playersMin": 2,
+    "playersMax": 12,
+    "averageDuration": 30,
+    "ageMin": 8,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 57,
+    "gameName": "Scotland Yard",
+    "playersMin": 3,
+    "playersMax": 6,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de cooperation",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 58,
+    "gameName": "Scotland Yard : A la poursuite de Mister X",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 20,
+    "ageMin": 8,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de cooperation",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 59,
+    "gameName": "Scrabble",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 90,
+    "ageMin": 10,
+    "fkTheme": null,
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu de pose de tuiles"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 60,
+    "gameName": "Senji",
+    "playersMin": 3,
+    "playersMax": 6,
+    "averageDuration": 90,
+    "ageMin": 10,
+    "fkTheme": "Asie",
+    "fkKeywords": [
+      "jet de des",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 61,
+    "gameName": "Small World",
+    "playersMin": 2,
+    "playersMax": 5,
+    "averageDuration": 75,
+    "ageMin": 8,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jeu de construction",
+      "jeu de placement",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 62,
+    "gameName": "Soiree enquete 1 : La mort s habille de blanc",
+    "playersMin": 8,
+    "playersMax": 8,
+    "averageDuration": 240,
+    "ageMin": 16,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 63,
+    "gameName": "Soiree enquete 2 : Beverly Place",
+    "playersMin": 9,
+    "playersMax": 9,
+    "averageDuration": 240,
+    "ageMin": 16,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 64,
+    "gameName": "Star Realms",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 45,
+    "ageMin": 12,
+    "fkTheme": "science fiction",
+    "fkKeywords": [
+      "deck building",
+      "gestion main/combinaison",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 65,
+    "gameName": "SteamRollers",
+    "playersMin": 1,
+    "playersMax": 5,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": "transport & voyage",
+    "fkKeywords": [
+      "draft",
+      "jeu de construction",
+      "roll and write"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 66,
+    "gameName": "Tantrix",
+    "playersMin": 1,
+    "playersMax": 4,
+    "averageDuration": 30,
+    "ageMin": 8,
+    "fkTheme": null,
+    "fkKeywords": [
+      "jeu de construction",
+      "jeu de pose de tuiles",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 67,
+    "gameName": "Tempete sur l echiquier",
+    "playersMin": 2,
+    "playersMax": 2,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": null,
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu d'ambiance",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 68,
+    "gameName": "The Adventurers : La Pyramide d Horus",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 45,
+    "ageMin": 10,
+    "fkTheme": "science fiction",
+    "fkKeywords": [
+      "jet de des",
+      "stop ou encore",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 69,
+    "gameName": "The Island",
+    "playersMin": 2,
+    "playersMax": 4,
+    "averageDuration": 45,
+    "ageMin": 8,
+    "fkTheme": "civilisation & mythologie",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de placement"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 70,
+    "gameName": "Times Up ! Academy 2",
+    "playersMin": 4,
+    "playersMax": 12,
+    "averageDuration": 45,
+    "ageMin": 12,
+    "fkTheme": "arts",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'equipe"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 71,
+    "gameName": "Times Up! Party",
+    "playersMin": 4,
+    "playersMax": 12,
+    "averageDuration": 40,
+    "ageMin": 12,
+    "fkTheme": "arts",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'equipe"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 72,
+    "gameName": "Une Soiree de Meurtre - Double Meurtre au Soleil",
+    "playersMin": 6,
+    "playersMax": 8,
+    "averageDuration": 150,
+    "ageMin": 14,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 73,
+    "gameName": "Une Soiree de Meurtre - Enquete dans le Passe",
+    "playersMin": 6,
+    "playersMax": 8,
+    "averageDuration": 150,
+    "ageMin": 14,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 74,
+    "gameName": "Une soiree de meurtre - Une Mort Sucree",
+    "playersMin": 6,
+    "playersMax": 8,
+    "averageDuration": 150,
+    "ageMin": 14,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 75,
+    "gameName": "Unlock! Extraordinary Adventures",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de cooperation",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 76,
+    "gameName": "Unlock! Heroic Adventures",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de cooperation",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 77,
+    "gameName": "Unlock! Legendary Adventures",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de cooperation",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 78,
+    "gameName": "Unlock! Mystery Adventures",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 10,
+    "fkTheme": "enquete & mystere",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jeu de cooperation",
+      "jeu d'enquete"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 79,
+    "gameName": "Uno",
+    "playersMin": 2,
+    "playersMax": 10,
+    "averageDuration": 30,
+    "ageMin": 7,
+    "fkTheme": null,
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 80,
+    "gameName": "Villainous",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 80,
+    "ageMin": 10,
+    "fkTheme": "superheros",
+    "fkKeywords": [
+      "gestion main/combinaison"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 81,
+    "gameName": "Villainous - La fin est proche !",
+    "playersMin": 2,
+    "playersMax": 3,
+    "averageDuration": 50,
+    "ageMin": 10,
+    "fkTheme": "superheros",
+    "fkKeywords": [
+      "gestion main/combinaison"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 82,
+    "gameName": "Voyage autour du monde",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 30,
+    "ageMin": 10,
+    "fkTheme": "transport & voyage",
+    "fkKeywords": [
+      "jet de des",
+      "jeu d'ambiance",
+      "jeu de construction"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 83,
+    "gameName": "Wanted! - Dead or Alive",
+    "playersMin": 3,
+    "playersMax": 8,
+    "averageDuration": 30,
+    "ageMin": 10,
+    "fkTheme": "western",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "guessing : presumer/supposer/deduire",
+      "strategie"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 84,
+    "gameName": "Warhammer - Invasion",
+    "playersMin": 2,
+    "playersMax": 2,
+    "averageDuration": 30,
+    "ageMin": 10,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jeu de construction",
+      "jeu de placement"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 85,
+    "gameName": "Wazabi",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 20,
+    "ageMin": 8,
+    "fkTheme": null,
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jet de des",
+      "jeu de connaissances"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 86,
+    "gameName": "Zero",
+    "playersMin": 3,
+    "playersMax": 5,
+    "averageDuration": 20,
+    "ageMin": 8,
+    "fkTheme": null,
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "guessing : presumer/supposer/deduire",
+      "jeu d'ambiance"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 87,
+    "gameName": "Zombicide",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 13,
+    "fkTheme": "contemporain",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 88,
+    "gameName": "Zombicide - 2eme edition",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 45,
+    "ageMin": 14,
+    "fkTheme": "contemporain",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 89,
+    "gameName": "Zombicide - Black Plague",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 90,
+    "ageMin": 12,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 90,
+    "gameName": "Zombicide - Green Horde",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 12,
+    "fkTheme": "medieval fantastique",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 91,
+    "gameName": "Zombicide - Marvel Zombies - La Resistance des Heros",
+    "playersMin": 1,
+    "playersMax": 4,
+    "averageDuration": 60,
+    "ageMin": 14,
+    "fkTheme": "superheros",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 92,
+    "gameName": "Zombicide - Rue Morgue",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 90,
+    "ageMin": 13,
+    "fkTheme": "contemporain",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 93,
+    "gameName": "Zombicide : Dark Side",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 120,
+    "ageMin": 14,
+    "fkTheme": "futuriste",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 94,
+    "gameName": "Zombicide : Invader",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 120,
+    "ageMin": 14,
+    "fkTheme": "futuriste",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 95,
+    "gameName": "Zombicide : Prison Outbreak",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 90,
+    "ageMin": 13,
+    "fkTheme": "contemporain",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 96,
+    "gameName": "Zombicide : Undead or Alive",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 45,
+    "ageMin": 14,
+    "fkTheme": "western",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 97,
+    "gameName": "Zombicide Marvel Zombies ",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 45,
+    "ageMin": 14,
+    "fkTheme": "superheros",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 98,
+    "gameName": "Zombicide Night of the Living Dead",
+    "playersMin": 1,
+    "playersMax": 6,
+    "averageDuration": 60,
+    "ageMin": 14,
+    "fkTheme": "horreur",
+    "fkKeywords": [
+      "jet de des",
+      "jeu de cooperation",
+      "jeu de narration"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 99,
+    "gameName": "Zombie Dice",
+    "playersMin": 2,
+    "playersMax": 8,
+    "averageDuration": 15,
+    "ageMin": 14,
+    "fkTheme": "horreur",
+    "fkKeywords": [
+      "guessing : presumer/supposer/deduire",
+      "jet de des",
+      "stop ou encore"
+    ],
+    "fkSecondaryThemes": []
+  },
+  {
+    "gameId": 100,
+    "gameName": "Zombies!!! - 2eme edition",
+    "playersMin": 2,
+    "playersMax": 6,
+    "averageDuration": 90,
+    "ageMin": 12,
+    "fkTheme": "horreur",
+    "fkKeywords": [
+      "gestion main/combinaison",
+      "jet de des",
+      "jeu de pose de tuiles"
+    ],
+    "fkSecondaryThemes": []
+  }
+]

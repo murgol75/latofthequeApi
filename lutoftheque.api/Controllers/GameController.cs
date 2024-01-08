@@ -17,7 +17,7 @@ namespace lutoftheque.api.Controllers
             _gameService = gameService;
         }
 
-        [HttpGet("Get All Games")]
+        [HttpGet]
         public ActionResult<List<Game>> Get()
         {
             var games = _gameService.GetGames();
@@ -25,7 +25,7 @@ namespace lutoftheque.api.Controllers
             return Ok(games);
         }
 
-        [HttpGet("Get Game By Id {id}")]
+        [HttpGet("{id}")]
         public ActionResult <Game> Get(int id)
         {
             var game = _gameService.GetGameById(id);

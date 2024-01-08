@@ -16,7 +16,7 @@ builder.Logging.AddDebug();
 
 // configuration de Serilog pour la journalisation
 Log.Logger = new LoggerConfiguration()
-    //.WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Minute) // enregistre le log dans le dossier "logs"
+    .WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Minute) // enregistre le log dans le dossier "logs"
     .CreateLogger();
 
 builder.Logging.ClearProviders();
@@ -28,7 +28,7 @@ builder.Logging.AddSerilog();
 // evite la recursivité lors des appels api avec Entity Framework
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
 builder.Services.AddControllers();
@@ -47,6 +47,7 @@ builder.Services.AddScoped<EventServiceBll>();
 builder.Services.AddScoped<PlayerServiceBll>();
 builder.Services.AddScoped<KeywordService>();
 builder.Services.AddScoped<WeightCalculate>();
+builder.Services.AddScoped<GameServiceBll>();
 
 
 
