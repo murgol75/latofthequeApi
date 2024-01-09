@@ -103,26 +103,22 @@ namespace lutoftheque.api.Controllers
         //    return Ok(games);
         //}
 
-[HttpGet("getGamesForEvent/{eventId}")]
+        [HttpGet("getGamesForEvent/{eventId}")]
         [SwaggerOperation(Summary = "Choisis les jeux", Description = "Permet de déterminer la liste des jeux qui correspondent aux joueurs, et à la durée de l'évènement")]
         public IActionResult GetChoosenGames(int eventId)
-{
-    var result = _eventServiceBll.ChooseGamesBll(eventId);
+        {
 
-    if (!string.IsNullOrEmpty(result.ErrorMessage))
-    {
-        // Retourne une erreur si le message d'erreur est défini
-        return BadRequest(result.ErrorMessage);
-    }
+            var result = _eventServiceBll.GetEventInfoToChooseGame(eventId);
 
-    if (result.Games == null || !result.Games.Any())
-    {
-        // Gère le cas où il n'y a pas de jeux à retourner
-        return NotFound($"Aucun jeu trouvé pour l'événement avec l'ID {eventId}");
-    }
+            // tester su result est rempli, en fait c'est tester errormessage s'il est vide ou pas
+            if (result.ErrorMessage != string.Empty)
+            {
+                return BadRequest(result.ErrorMessage);
+            }
 
-    return Ok(result.Games.Select(g => g.ToDTO()));
-}
+
+            return Ok(result.Games.Select(g => g.ToDTO()));
+        }
 
     }
 }
