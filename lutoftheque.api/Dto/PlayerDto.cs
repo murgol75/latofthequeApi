@@ -22,4 +22,14 @@ namespace lutoftheque.api.Dto
         public virtual ICollection<PlayerKeywordDto> PlayerKeywords { get; set; } = new List<PlayerKeywordDto>();
         public virtual ICollection<PlayerGameDto> PlayerGames { get; set; } = new List<PlayerGameDto>();
     }
+
+    public class PlayerCreationDto
+    {
+    public string Nickname { get; set; }
+    public string Email { get; set; }
+    public DateTime Birthdate { get; set; }
+    public string HashPwd { get; set; }
+    public virtual ICollection<PlayerKeyword> PlayerKeywords { get; set; } = new List<PlayerKeyword>();
+    public virtual ICollection<PlayerTheme> PlayerThemes { get; set; } = new List<PlayerTheme>();
+    }
 }

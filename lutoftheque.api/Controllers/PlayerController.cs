@@ -1,4 +1,5 @@
-﻿using lutoftheque.api.Services;
+﻿using lutoftheque.api.Dto;
+using lutoftheque.api.Services;
 using lutoftheque.Entity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -30,5 +31,24 @@ namespace lutoftheque.api.Controllers
 
             return Ok(players);
         }
+        //[HttpPost("createPlayer")]
+        //public IActionResult Create(PlayerCreationDto playerCreated)
+        //{
+        //    if (playerCreated == null || !ModelState.IsValid) // si le formulaire n'existe pas ou que le modèle n'est pas bien remplis, on renvoie une BadRequest
+        //    {
+        //        return BadRequest();
+        //    }
+        //    // sinon on essaye de le poster
+        //    try
+        //    {
+        //        _playerService.CreatePlayer(playerCreated.Nickname, playerCreated.Email, playerCreated.Birthdate, playerCreated.HashPwd,playerCreated.PlayerKeywords,playerCreated.PlayerThemes);
+        //        return Ok("Evennement créé");
+        //    }
+        //    //et si on y arrive pas, on ressort une exception
+        //    catch (Exception ex) // ex reçoit les détails de l'erreur... à utiliser quand je gèrerai les exceptions
+        //    {
+        //        return StatusCode(500, "erreur Interne");
+        //    }
+        //}
     }
 }

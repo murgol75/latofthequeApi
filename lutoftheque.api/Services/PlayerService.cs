@@ -1,6 +1,8 @@
 ﻿using lutoftheque.api.Dto;
 using lutoftheque.Entity.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace lutoftheque.api.Services
 {
@@ -55,6 +57,7 @@ namespace lutoftheque.api.Services
                     .ToList(),
                 }).ToList();
         }
+        
         public List<PlayerByEventDto> GetPlayersByEvent(int id)
         {
             return context.Players
@@ -99,5 +102,21 @@ namespace lutoftheque.api.Services
                     // Les events auxquels il participe
                 }).ToList();
         }
+
+        //public void CreatePlayer(string NickName, string email, DateTime birthdate, string password, ICollection<PlayerKeyword> playerKeywords, ICollection<PlayerTheme> playerThemes)
+        //{
+        //    Player newPlayer = new Player
+        //    {
+        //        Nickname = NickName,
+        //        Email = email,
+        //        Birthdate = birthdate,
+        //        HashPwd = password,
+        //        PlayerKeywords = playerKeywords,
+        //        PlayerThemes = playerThemes
+        //    };
+
+        //    context.Players.Add(newPlayer);
+        //    context.SaveChanges();  // à faire pour enregistrer l'entrée
+        //}
     }
 }

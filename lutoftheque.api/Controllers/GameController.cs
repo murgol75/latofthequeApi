@@ -31,6 +31,7 @@ namespace lutoftheque.api.Controllers
             var game = _gameService.GetGameById(id);
             return Ok(game);
         }
+        //[HttpPost("createGame")]
 
     }
 }
