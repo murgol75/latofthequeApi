@@ -1,12 +1,15 @@
 ﻿using lutoftheque.api.Services;
 using lutoftheque.Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lutoftheque.api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
+    //[Authorize(Roles = "Admin")] // Ici il controlle l'autorization de tous les controllers 
+
     public class GameController : ControllerBase
     {
         private readonly GameService _gameService;

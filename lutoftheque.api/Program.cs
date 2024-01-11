@@ -6,8 +6,41 @@ using System.Text.Json.Serialization;
 using Serilog;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using lutoftheque.api.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// recuperer les infos de config de jwt à partir du fichier appsettings.json et le stocker dans la classe prévue
+JwtOptions options = builder.Configuration.GetSection("JwtOptions").Get<JwtOptions>();
+
+// injection de jwtOptions
+builder.Services.AddSingleton(options);
+
+// configuration de l'auth dans les services
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer
+    (
+    o =>
+    {
+        // recuperer la clé de signature
+        byte[] sKey = Encoding.UTF8.GetBytes(options.SigningKey);
+        o.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = options.Issuer,
+            ValidAudience = options.Audience,
+            IssuerSigningKey = new SymmetricSecurityKey(sKey)
+        };
+    }
+    );
+builder.Services.AddAuthorization();
 
 // mise en place de la journalisation
 builder.Logging.ClearProviders();
@@ -48,6 +81,9 @@ builder.Services.AddScoped<PlayerServiceBll>();
 builder.Services.AddScoped<KeywordService>();
 builder.Services.AddScoped<WeightCalculate>();
 builder.Services.AddScoped<GameServiceBll>();
+builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<AuthServiceBll>();
+
 
 
 
@@ -61,7 +97,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

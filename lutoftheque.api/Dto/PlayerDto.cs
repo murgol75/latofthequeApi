@@ -29,7 +29,6 @@ namespace lutoftheque.api.Dto
     public string Email { get; set; }
     public DateTime Birthdate { get; set; }
     public string HashPwd { get; set; }
-    public virtual ICollection<PlayerKeyword> PlayerKeywords { get; set; } = new List<PlayerKeyword>();
-    public virtual ICollection<PlayerTheme> PlayerThemes { get; set; } = new List<PlayerTheme>();
+    public bool IsAdmin { get; set; }
     }
 }

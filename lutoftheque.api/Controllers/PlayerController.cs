@@ -1,6 +1,7 @@
 ﻿using lutoftheque.api.Dto;
 using lutoftheque.api.Services;
 using lutoftheque.Entity.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,7 +16,7 @@ namespace lutoftheque.api.Controllers
         {
             _playerService = playerService;
         }
-
+        //[Authorize(Roles ="Admin")] // peut se mettre au dessus d'une methode mais aussi au -dessus du controller pour tout sécuriser
         [HttpGet("getAllPlayers")]
         public ActionResult<List<Player>> Get()
         {
