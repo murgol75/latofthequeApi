@@ -43,37 +43,45 @@ namespace lutoftheque.api.Controllers
                 return BadRequest();
             }
 
-            //if ((lm.nickname != "admin" && lm.nickname != "Mike") || lm.password != "Test1234$")
-            //{
-            //    return BadRequest();
-            //}
+            // recuperer les informations complementaires sur l'utilisateur : rôle et email
 
+            Player loggedUser = _authService.AuthenticateUser(lm.nickname, lm.password);
+            if (loggedUser == null)
+            {
+                return Unauthorized();
+            }
 
+            string token = _authService.GenerateJwtToken(loggedUser);
 
-            // generer le token et le renvoyer
-            // 1.stringkey vers byte key
-            byte[] skey = Encoding.UTF8.GetBytes(_jwtOptions.SigningKey);
-            SymmetricSecurityKey laCle = new SymmetricSecurityKey(skey);
+            return Ok(new {Nom = loggedUser.Nickname, Token = token});
 
-            // 2. les claims
-            Claim infoNom = new Claim(ClaimTypes.Name, "Tof");
-            Claim Role = new Claim(ClaimTypes.Role, "admin");
+            #region à effacer plus tard
+            //// generer le token et le renvoyer
+            //// 1.stringkey vers byte key
+            //byte[] skey = Encoding.UTF8.GetBytes(_jwtOptions.SigningKey);
+            //SymmetricSecurityKey laCle = new SymmetricSecurityKey(skey);
 
-            List<Claim> mesClaims = new List<Claim>();
-            mesClaims.Add(infoNom);
-            mesClaims.Add(Role);
+            //// 2. les claims
+            //Claim infoNom = new Claim(ClaimTypes.Name, lm.nickname);
+            //Claim Role = new Claim(ClaimTypes.Role, "Admin"?"User"); // a remplacer par ce qui est reçu de la DB
 
-            JwtSecurityToken Token = new JwtSecurityToken(
+            //List<Claim> mesClaims = new List<Claim>();
+            //mesClaims.Add(infoNom);
+            //mesClaims.Add(Role);
 
-                issuer: _jwtOptions.Issuer,
-                audience: _jwtOptions.Audience,
-                claims: mesClaims,
-                expires: DateTime.Now.AddSeconds(_jwtOptions.Expiration),
-                signingCredentials: new SigningCredentials(laCle, SecurityAlgorithms.HmacSha256));
+            //JwtSecurityToken Token = new JwtSecurityToken(
 
-            string TokenToSend = new JwtSecurityTokenHandler().WriteToken(Token);
+            //    issuer: _jwtOptions.Issuer,
+            //    audience: _jwtOptions.Audience,
+            //    claims: mesClaims,
+            //    expires: DateTime.Now.AddSeconds(_jwtOptions.Expiration),
+            //    signingCredentials: new SigningCredentials(laCle, SecurityAlgorithms.HmacSha256));
 
-            return Ok(new { Nom = lm.nickname, Token = TokenToSend });
+            //string TokenToSend = new JwtSecurityTokenHandler().WriteToken(Token);
+
+            //return Ok(new { Nom = lm.nickname, Token = TokenToSend });
+
+            #endregion
         }
         [HttpPost("CreatePlayer")]
         public IActionResult CreatePlayer(PlayerCreationDto playerCreated)

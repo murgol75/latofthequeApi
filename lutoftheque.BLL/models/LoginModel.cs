@@ -12,6 +12,7 @@ namespace lutoftheque.bll.models
         private string _nickname;
         private string _password;
 
+
         [Required]
         public string nickname
         {
