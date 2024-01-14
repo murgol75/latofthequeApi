@@ -23,7 +23,10 @@ namespace lutoftheque.api.Services
                 {
                     EventId = e.EventId,
                     StartTime = e.StartTime,
-                    EndTime = e.EndTime
+                    EndTime = e.EndTime,
+                    RegistrationClosingDate = e.RegistrationClosingDate,
+                    EventName = e.EventName,
+                    EventDescription = e.EventDescription,
                 }).ToList();
         }
 
@@ -60,14 +63,17 @@ namespace lutoftheque.api.Services
             return eventFullDto;
         }
 
-        public void CreateEvent(DateTime start, DateTime end, int id)
+        public void CreateEvent(DateTime start, DateTime end, int id,DateTime close,string eventName, string eventDescription)
         {
             Event newEvent = new Event
             {
                 StartTime = start,
                 EndTime = end,
                 FkOrganizerId = id,
-            };
+                RegistrationClosingDate = close,
+                EventName = eventName,
+                EventDescription = eventDescription
+    };
 
             context.Events.Add(newEvent); 
             context.SaveChanges();  // à faire pour enregistrer l'entrée

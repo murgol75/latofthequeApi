@@ -46,8 +46,8 @@ namespace lutoftheque.api.Controllers
             // sinon on essaye de le poster
             try
             {
-                _eventService.CreateEvent(eventCreated.StartTime, eventCreated.EndTime, eventCreated.FkOrganizerId);
-                return Ok("Evennement créé");
+                _eventService.CreateEvent(eventCreated.StartTime, eventCreated.EndTime, eventCreated.FkOrganizerId, eventCreated.RegistrationClosingDate, eventCreated.EventName, eventCreated.EventDescription );
+                return Ok(eventCreated);
             }
             //et si on y arrive pas, on ressort une exception
             catch (Exception ex) // ex reçoit les détails de l'erreur... à utiliser quand je gèrerai les exceptions

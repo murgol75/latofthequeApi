@@ -41,4 +41,11 @@ namespace lutoftheque.bll.models
         public int? Number { get; set; }
         public bool Eligible { get; set; }
     }
+
+    public class PlayerLightDto
+    {
+        public int PlayerId { get; set; }
+        public string? Nickname { get; set; }
+        public DateTime Birthdate { get; set; }
+    }
 }

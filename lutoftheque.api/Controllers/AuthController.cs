@@ -31,6 +31,8 @@ namespace lutoftheque.api.Controllers
         }
 
         [HttpPost("Login")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlayerToken))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Login(LoginModel lm)
         {
             if (lm == null)
@@ -53,7 +55,11 @@ namespace lutoftheque.api.Controllers
 
             string token = _authService.GenerateJwtToken(loggedUser);
 
-            return Ok(new {Nom = loggedUser.Nickname, Token = token});
+            return Ok(new PlayerToken()
+            {
+                Nickname = lm.nickname,
+                Token = token,
+            });
 
             #region à effacer plus tard
             //// generer le token et le renvoyer
@@ -83,6 +89,29 @@ namespace lutoftheque.api.Controllers
 
             #endregion
         }
+        [HttpGet("UserInfo")]
+        //[Authorize]
+        public IActionResult UserInfo()
+        {
+            // Extraire le nom d'utilisateur ou l'ID de l'utilisateur à partir du token JWT
+            var userName = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+
+            if (string.IsNullOrEmpty(userName))
+            {
+                return Unauthorized();
+            }
+
+            // Récupérer les informations de l'utilisateur à partir du nom d'utilisateur
+            var user = _authServiceBll.GetPlayerInfo(userName);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            // Retourner les informations de l'utilisateur
+            return Ok(user);
+        }
+
         [HttpPost("CreatePlayer")]
         public IActionResult CreatePlayer(PlayerCreationDto playerCreated)
         {

@@ -9,6 +9,10 @@ namespace lutoftheque.api.Dto
         public DateTime StartTime { get; set; }
 
         public DateTime EndTime { get; set; }
+        public DateTime RegistrationClosingDate { get; set; }
+        public string EventName { get; set; }
+        public string EventDescription { get; set; }
+
     }
     public class EventFullDto
     {
@@ -23,6 +27,12 @@ namespace lutoftheque.api.Dto
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public int FkOrganizerId { get; set; }
+        public DateTime RegistrationClosingDate { get; set; }
+        public string EventName { get; set; }
+        public string EventDescription { get; set; }
+
+
+
     }
 
 }

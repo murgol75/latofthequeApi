@@ -26,6 +26,7 @@ namespace lutoftheque.api.Services
                     PlayerId = p.PlayerId, // player Id
                     Nickname = p.Nickname, // player nickname
                     Birthdate = p.Birthdate, // player Birthdate
+                    email = p.Email,
                     // les keyword et leurs cotes
                     PlayerKeywords = p.PlayerKeywords
                         .Select(pk => new PlayerKeywordDto

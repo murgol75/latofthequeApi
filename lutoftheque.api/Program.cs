@@ -13,6 +13,19 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Ajoutez cette configuration pour CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("MyAllowSpecificOrigins",
+    builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+               .AllowAnyHeader()
+               .AllowAnyMethod();
+    });
+});
+
+
 // recuperer les infos de config de jwt à partir du fichier appsettings.json et le stocker dans la classe prévue
 JwtOptions options = builder.Configuration.GetSection("JwtOptions").Get<JwtOptions>();
 
@@ -95,10 +108,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else 
+{
+    app.UseExceptionHandler("/Error");
+    app.UseHsts();
+}
+
+
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseStaticFiles();
+app.UseRouting();
+
+app.UseCors("MyAllowSpecificOrigins");
 
 app.MapControllers();
 
