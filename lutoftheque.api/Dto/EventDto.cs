@@ -12,6 +12,7 @@ namespace lutoftheque.api.Dto
         public DateTime RegistrationClosingDate { get; set; }
         public string EventName { get; set; }
         public string EventDescription { get; set; }
+        public bool RegistrationClosed { get; set; }
 
     }
     public class EventFullDto
@@ -21,6 +22,12 @@ namespace lutoftheque.api.Dto
         public DateTime EndTime { get; set; }
         public List<string>? ParticipatingPlayers { get; set; }
         public List<string>? AvailableGames { get; set; }
+        public DateTime RegistrationClosingDate { get; set; }
+        public string EventName { get; set; }
+        public string EventDescription { get; set; }
+        public bool RegistrationClosed { get; set; }
+
+
     }
     public class EventToCreateDto
     {

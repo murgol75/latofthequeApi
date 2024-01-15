@@ -1,4 +1,5 @@
-﻿using lutoftheque.Entity.Models;
+﻿using lutoftheque.bll.models;
+using lutoftheque.Entity.Models;
 
 namespace lutoftheque.api.Dto
 {
@@ -35,7 +36,7 @@ namespace lutoftheque.api.Dto
 
     public class PlayerToken
     {
-        public string Nickname { get; set; }
+        public PlayerLightDto Member { get; set; }
         public string Token { get; set; }
 
     }

@@ -50,14 +50,21 @@ namespace lutoftheque.api.Controllers
             Player loggedUser = _authService.AuthenticateUser(lm.nickname, lm.password);
             if (loggedUser == null)
             {
-                return Unauthorized();
+                return BadRequest();
             }
 
             string token = _authService.GenerateJwtToken(loggedUser);
+            PlayerLightDto Member = new PlayerLightDto
+            {
+                PlayerId = loggedUser.PlayerId,
+                Nickname = loggedUser.Nickname,
+                Birthdate = loggedUser.Birthdate,
+                IsAdmin = loggedUser.IsAdmin
+            };
 
             return Ok(new PlayerToken()
             {
-                Nickname = lm.nickname,
+                Member = Member,
                 Token = token,
             });
 

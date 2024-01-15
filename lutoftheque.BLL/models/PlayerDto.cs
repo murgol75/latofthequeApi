@@ -47,5 +47,6 @@ namespace lutoftheque.bll.models
         public int PlayerId { get; set; }
         public string? Nickname { get; set; }
         public DateTime Birthdate { get; set; }
+        public bool IsAdmin { get; set; }
     }
 }

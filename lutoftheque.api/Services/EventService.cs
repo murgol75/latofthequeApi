@@ -27,6 +27,7 @@ namespace lutoftheque.api.Services
                     RegistrationClosingDate = e.RegistrationClosingDate,
                     EventName = e.EventName,
                     EventDescription = e.EventDescription,
+                    RegistrationClosed = e.RegistrationClosed
                 }).ToList();
         }
 
@@ -50,6 +51,10 @@ namespace lutoftheque.api.Services
                 EventId = eventItem.EventId,
                 StartTime = eventItem.StartTime,
                 EndTime = eventItem.EndTime,
+                RegistrationClosingDate = eventItem.RegistrationClosingDate,
+                EventName = eventItem.EventName,
+                EventDescription = eventItem.EventDescription,
+                RegistrationClosed = eventItem.RegistrationClosed,
                 ParticipatingPlayers = eventItem.FkPlayers
                     .Select(p => p.Nickname)
                     .ToList(),

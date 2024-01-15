@@ -15,6 +15,7 @@ public partial class Event
     public DateTime RegistrationClosingDate { get; set; }
     public string EventName { get; set; }
     public string EventDescription { get; set; }
+    public bool RegistrationClosed { get; set; }
 
     public int FkOrganizerId { get; set; }
 

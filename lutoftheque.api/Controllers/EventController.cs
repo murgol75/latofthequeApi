@@ -29,7 +29,7 @@ namespace lutoftheque.api.Controllers
             var events = _eventService.GetEvents();
             return Ok(events);
         }
-        [HttpGet("getEventById/{eventId}")]
+        [HttpGet("getEventById/{id}")]
         public ActionResult<Event> Get(int id)
         {
             var eventItem = _eventService.GetEventById(id);
@@ -37,6 +37,7 @@ namespace lutoftheque.api.Controllers
         }
 
         [HttpPost("createEvent")]
+
         public IActionResult Create(EventToCreateDto eventCreated)
         {
             if (eventCreated == null || !ModelState.IsValid) // si le formulaire n'existe pas ou que le modèle n'est pas bien remplis, on renvoie une BadRequest
