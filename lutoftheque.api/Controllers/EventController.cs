@@ -7,6 +7,7 @@ using lutoftheque.bll.Services;
 using lutoftheque.api.Mappers;
 using lutoftheque.bll;
 using Swashbuckle.AspNetCore.Annotations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace lutoftheque.api.Controllers
 {
@@ -37,7 +38,7 @@ namespace lutoftheque.api.Controllers
         }
 
         [HttpPost("createEvent")]
-
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(EventToCreateDto eventCreated)
         {
             if (eventCreated == null || !ModelState.IsValid) // si le formulaire n'existe pas ou que le modèle n'est pas bien remplis, on renvoie une BadRequest
@@ -57,8 +58,9 @@ namespace lutoftheque.api.Controllers
             }
         }
 
-        [HttpPut("updateEvent/{eventId}")]
-        public IActionResult Update(int eventId, EventLightDto eventItem) 
+        [HttpPut("updateEvent/{Id}")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(int Id, EventLightDto eventItem) 
         
         {
             
@@ -67,14 +69,14 @@ namespace lutoftheque.api.Controllers
                 return BadRequest("Cet evènement n'existe pas");
             }
 
-            if (eventItem.EventId != eventId)
+            if (eventItem.EventId != Id)
             {
                 return BadRequest("l'ID de l'évènement ne correspond pas"); // mais je vois pas quand ça peut arriver
             }
 
             var eventToUpdate = new EventLightDto
             {
-                EventId = eventId,
+                EventId = Id,
                 StartTime = eventItem.StartTime,
                 EndTime = eventItem.EndTime,
             };
@@ -86,30 +88,23 @@ namespace lutoftheque.api.Controllers
             return NotFound();
         }
 
-        [HttpDelete("deleteEvent/{eventId}")]
-        public IActionResult Delete(int eventId)
+        [HttpDelete("deleteEvent/{Id}")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int Id)
         {
-            if (_eventService.DeleteEvent(eventId))
+            if (_eventService.DeleteEvent(Id))
             {
                 return NoContent(); // Suppression réussie
             }
             return NotFound(); // Événement non trouvé
         }
 
-        //[HttpGet("getGamesForEvent/{eventId}")]
-        //public IActionResult GetChoosenGames(int eventId)
-        //{
-        //    IEnumerable<GameLightDto>? games = _eventServiceBll.ChooseGamesBll(eventId).Select(g => g.ToDTO());
-
-        //    return Ok(games);
-        //}
-
-        [HttpGet("getGamesForEvent/{eventId}")]
+        [HttpGet("getGamesForEvent/{Id}")]
         [SwaggerOperation(Summary = "Choisis les jeux", Description = "Permet de déterminer la liste des jeux qui correspondent aux joueurs, et à la durée de l'évènement")]
-        public IActionResult GetChoosenGames(int eventId)
+        public IActionResult GetChoosenGames(int Id)
         {
 
-            var result = _eventServiceBll.GetEventInfoToChooseGame(eventId);
+            var result = _eventServiceBll.GetEventInfoToChooseGame(Id);
 
             // tester su result est rempli, en fait c'est tester errormessage s'il est vide ou pas
             if (result.ErrorMessage != string.Empty)

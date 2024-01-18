@@ -36,6 +36,7 @@ namespace lutoftheque.api.Services
                     PlayersMax = g.PlayersMax,
                     AverageDuration = g.AverageDuration,
                     AgeMin = g.AgeMin,
+                    Picture = g.Picture,
                     FkTheme = g.FkTheme.ThemeName, 
                     FkKeywords = g.FkKeywords.Select(k => k.KeywordName).ToList(),
                     FkSecondaryThemes = g.FkSecondaryThemes.Select(st => st.ThemeName).ToList()

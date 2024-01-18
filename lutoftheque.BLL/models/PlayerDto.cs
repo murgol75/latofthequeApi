@@ -42,11 +42,9 @@ namespace lutoftheque.bll.models
         public bool Eligible { get; set; }
     }
 
-    public class PlayerLightDto
+    public class PlayerLightDto // c'est le format retourné en front et stocké dans le localStorage
     {
         public int PlayerId { get; set; }
         public string? Nickname { get; set; }
-        public DateTime Birthdate { get; set; }
-        public bool IsAdmin { get; set; }
     }
 }

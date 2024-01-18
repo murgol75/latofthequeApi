@@ -58,8 +58,6 @@ namespace lutoftheque.api.Controllers
             {
                 PlayerId = loggedUser.PlayerId,
                 Nickname = loggedUser.Nickname,
-                Birthdate = loggedUser.Birthdate,
-                IsAdmin = loggedUser.IsAdmin
             };
 
             return Ok(new PlayerToken()
@@ -68,36 +66,22 @@ namespace lutoftheque.api.Controllers
                 Token = token,
             });
 
-            #region à effacer plus tard
-            //// generer le token et le renvoyer
-            //// 1.stringkey vers byte key
-            //byte[] skey = Encoding.UTF8.GetBytes(_jwtOptions.SigningKey);
-            //SymmetricSecurityKey laCle = new SymmetricSecurityKey(skey);
-
-            //// 2. les claims
-            //Claim infoNom = new Claim(ClaimTypes.Name, lm.nickname);
-            //Claim Role = new Claim(ClaimTypes.Role, "Admin"?"User"); // a remplacer par ce qui est reçu de la DB
-
-            //List<Claim> mesClaims = new List<Claim>();
-            //mesClaims.Add(infoNom);
-            //mesClaims.Add(Role);
-
-            //JwtSecurityToken Token = new JwtSecurityToken(
-
-            //    issuer: _jwtOptions.Issuer,
-            //    audience: _jwtOptions.Audience,
-            //    claims: mesClaims,
-            //    expires: DateTime.Now.AddSeconds(_jwtOptions.Expiration),
-            //    signingCredentials: new SigningCredentials(laCle, SecurityAlgorithms.HmacSha256));
-
-            //string TokenToSend = new JwtSecurityTokenHandler().WriteToken(Token);
-
-            //return Ok(new { Nom = lm.nickname, Token = TokenToSend });
-
-            #endregion
+           
         }
+
+        /// <summary>
+        /// Obtient les infos de l'utilisateur courant
+        /// </summary>
+        /// <remarks>
+        /// Cette méthode extrait les informations de l'utilisateur à partir du token JWT fourni et renvoie les détails de l'utilisateur.
+        /// Elle nécessite que l'utilisateur soit authentifié.
+        /// </remarks>
+        /// <returns>un joueur (son id et Nickname)</returns>
         [HttpGet("UserInfo")]
-        //[Authorize]
+        [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)] 
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult UserInfo()
         {
             // Extraire le nom d'utilisateur ou l'ID de l'utilisateur à partir du token JWT

@@ -61,7 +61,6 @@ namespace lutoftheque.bll.Services
             {
                 PlayerId = player.PlayerId,
                 Nickname = player.Nickname,
-                Birthdate = player.Birthdate
             };
 
             return playerLight;

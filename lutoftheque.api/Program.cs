@@ -54,7 +54,6 @@ builder.Services
         };
     }
     );
-builder.Services.AddAuthorization();
 
 // mise en place de la journalisation
 builder.Logging.ClearProviders();
@@ -116,10 +115,13 @@ builder.Services.AddTransient<EventService>();
 builder.Services.AddScoped<EventServiceBll>();
 builder.Services.AddScoped<PlayerServiceBll>();
 builder.Services.AddScoped<KeywordService>();
+builder.Services.AddScoped<KeywordServiceBll>();
 builder.Services.AddScoped<WeightCalculate>();
 builder.Services.AddScoped<GameServiceBll>();
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<AuthServiceBll>();
+builder.Services.AddScoped<ThemeServiceBll>();
+
 
 
 
@@ -140,11 +142,11 @@ else
 
 
 
+app.UseRouting();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();
-app.UseRouting();
 
 app.UseCors("MyAllowSpecificOrigins");
 

@@ -3004,19 +3004,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Student\\.nuget\\packages\\": {}
+    "C:\\Users\\murgo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Student\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\lutoftheque.Entity.csproj",
+      "projectUniqueName": "C:\\Users\\murgo\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\lutoftheque.Entity.csproj",
       "projectName": "lutoftheque.Entity",
-      "projectPath": "C:\\Users\\Student\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\lutoftheque.Entity.csproj",
-      "packagesPath": "C:\\Users\\Student\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Student\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\obj\\",
+      "projectPath": "C:\\Users\\murgo\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\lutoftheque.Entity.csproj",
+      "packagesPath": "C:\\Users\\murgo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\murgo\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\murgo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3087,7 +3087,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

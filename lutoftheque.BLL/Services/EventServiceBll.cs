@@ -15,17 +15,21 @@ namespace lutoftheque.bll.Services
     public class EventServiceBll
     {
         private readonly lutofthequeContext context;
-        private readonly WeightCalculate _weightCalculate;
+        //private readonly WeightCalculate _weightCalculate;
         private readonly GameServiceBll _gameServiceBll;
         private readonly ILogger<EventServiceBll> _logger; // pour la creation des logs
+        private readonly WeightCalculate weightCalculate;
+
+
 
         //Ce constructeur prend un paramètre context de type lutofthequeContext et l'assigne à la variable context de la classe.
         public EventServiceBll(lutofthequeContext context, PlayerServiceBll playerServiceBll, WeightCalculate weightCalculate, ILogger<EventServiceBll> logger, GameServiceBll gameServiceBll)
         {
             this.context = context;
-            this._weightCalculate = weightCalculate;
+            this.weightCalculate = weightCalculate;
             this._gameServiceBll = gameServiceBll;
             _logger = logger; // me serts pour les logs
+
         }
 
         /// <summary>
@@ -172,7 +176,7 @@ namespace lutoftheque.bll.Services
 
                 // 1. recuperer la liste des mots-clés et themes avec une valeur de 0
 
-                WeightCalculate weightCalculate = new WeightCalculate(context);
+                //WeightCalculate weightCalculate = new WeightCalculate(context);
                 List<KeywordWeight> keywords = weightCalculate.CreateKeywordWeightList();  
                 if (keywords == null)
                 {

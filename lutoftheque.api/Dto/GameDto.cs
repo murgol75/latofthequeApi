@@ -11,6 +11,7 @@ namespace lutoftheque.api.Dto
         public int PlayersMax { get; set; }
         public int AverageDuration { get; set; }
         public int AgeMin { get; set; }
+        public string? Picture { get; set; }
         public string? FkTheme { get; set; }
         public List<string>? FkKeywords { get; set; }
         public List<string>? FkSecondaryThemes { get; set; }
