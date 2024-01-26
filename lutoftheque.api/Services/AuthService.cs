@@ -87,9 +87,40 @@ namespace lutoftheque.api.Services
 
             context.Players.Add(newPlayer);
             context.SaveChanges();  // à faire pour enregistrer l'entrée
-        }
 
-        
+            #region initialisation de toutes les valeurs Keyword à 3
+            var keywordIds = context.Keywords.Select(k => k.KeywordId).ToList(); // Récupération de tous les KeywordId
+
+            foreach (var keywordId in keywordIds)
+            {
+                PlayerKeyword newPlayerKeyword = new PlayerKeyword
+                {
+                    FkKeywordId = keywordId,
+                    FkPlayerId = newPlayer.PlayerId, // Utilisez l'ID du joueur nouvellement créé
+                    KeywordNote = 3
+                };
+                context.PlayerKeywords.Add(newPlayerKeyword);
+            }
+            context.SaveChanges(); // Enregistrement des nouvelles entrées Player_Keyword
+            #endregion
+
+            #region initialisation de toutes les valeurs theme à 3
+            var themeIds = context.Themes.Select(t => t.ThemeId).ToList();
+
+            foreach (var themeId in themeIds)
+            {
+                PlayerTheme newPlayerTheme = new PlayerTheme
+                {
+                    FkThemeId = themeId,
+                    FkPlayerId = newPlayer.PlayerId, // Utilisez l'ID du joueur nouvellement créé
+                    ThemeNote = 3
+                };
+                context.PlayerThemes.Add(newPlayerTheme);
+            }
+            context.SaveChanges(); // Enregistrement des nouvelles entrées Player_Keyword
+            #endregion
+
+        }
 
     }
 }
