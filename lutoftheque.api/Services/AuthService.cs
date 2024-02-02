@@ -85,6 +85,19 @@ namespace lutoftheque.api.Services
                 IsAdmin = isAdmin
             };
 
+            #region Verification de l'existance d'un joueur avec le même pseudo
+
+            var existingPlayer = context.Players.FirstOrDefault(p => p.Nickname == nickname);
+            if (existingPlayer != null)
+            {
+                throw new DuplicateNicknameException("Ce Pseudo est déjà utilisé");
+            }
+
+            #endregion
+
+
+
+
             context.Players.Add(newPlayer);
             context.SaveChanges();  // à faire pour enregistrer l'entrée
 

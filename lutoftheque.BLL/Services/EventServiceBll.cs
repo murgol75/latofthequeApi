@@ -27,7 +27,7 @@ namespace lutoftheque.bll.Services
         {
             this.context = context;
             this.weightCalculate = weightCalculate;
-            this._gameServiceBll = gameServiceBll;
+            this.gameServiceBll = gameServiceBll;
             _logger = logger; // me serts pour les logs
 
         }

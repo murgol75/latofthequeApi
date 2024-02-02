@@ -1,4 +1,5 @@
 ﻿using lutoftheque.api.Dto;
+using lutoftheque.api.Exceptions;
 using lutoftheque.api.Models;
 using lutoftheque.api.Services;
 using lutoftheque.bll.models;
@@ -115,7 +116,12 @@ namespace lutoftheque.api.Controllers
             {
                 _authService.CreatePlayer(playerCreated.Nickname, playerCreated.HashPwd, playerCreated.Email, playerCreated.Birthdate, playerCreated.IsAdmin);
 
-                return Ok("Player créé");
+                return StatusCode(201);
+            }
+            // exception si le pseudo est déjà pris
+            catch (DuplicateNicknameException ex)
+            {
+                return Conflict(ex.Message); // Renvoie un code d'état HTTP 409 avec le message de l'exception
             }
             //et si on y arrive pas, on ressort une exception
             catch (Exception) // ex reçoit les détails de l'erreur... à utiliser quand je gèrerai les exceptions
