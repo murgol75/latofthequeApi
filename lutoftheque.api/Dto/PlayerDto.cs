@@ -40,4 +40,6 @@ namespace lutoftheque.api.Dto
         public string Token { get; set; }
 
     }
+
+   
 }

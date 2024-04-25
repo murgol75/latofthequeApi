@@ -104,20 +104,19 @@ namespace lutoftheque.api.Services
                 }).ToList();
         }
 
-        //public void CreatePlayer(string NickName, string email, DateTime birthdate, string password, ICollection<PlayerKeyword> playerKeywords, ICollection<PlayerTheme> playerThemes)
-        //{
-        //    Player newPlayer = new Player
-        //    {
-        //        Nickname = NickName,
-        //        Email = email,
-        //        Birthdate = birthdate,
-        //        HashPwd = password,
-        //        PlayerKeywords = playerKeywords,
-        //        PlayerThemes = playerThemes
-        //    };
+        public Player GetPlayerById(int id)
+        {
+            // D'abbord créer le modele de retour : je prends le model de base : Player
+            // ensuite faire la requete return context. ...
+            // dans cette requete il me faut le joueur avec le bon ID, les évènements auxquels il participe, ces choix de keyword et de theme
 
-        //    context.Players.Add(newPlayer);
-        //    context.SaveChanges();  // à faire pour enregistrer l'entrée
-        //}
+            
+
+
+
+
+            return null;
+        }
+
     }
 }

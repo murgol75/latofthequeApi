@@ -19,6 +19,7 @@ namespace lutoftheque.bll.Services
         private readonly GameServiceBll _gameServiceBll;
         private readonly ILogger<EventServiceBll> _logger; // pour la creation des logs
         private readonly WeightCalculate weightCalculate;
+        private readonly GameServiceBll gameServiceBll;
 
 
 
@@ -29,7 +30,7 @@ namespace lutoftheque.bll.Services
             this.weightCalculate = weightCalculate;
             this.gameServiceBll = gameServiceBll;
             _logger = logger; // me serts pour les logs
-
+            _gameServiceBll = gameServiceBll; // Initialisation de _gameServiceBll
         }
 
         /// <summary>

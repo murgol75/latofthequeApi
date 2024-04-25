@@ -1,4 +1,5 @@
-﻿using lutoftheque.api.Models;
+﻿using lutoftheque.api.Exceptions;
+using lutoftheque.api.Models;
 using lutoftheque.bll.models;
 using lutoftheque.bll.Services;
 using lutoftheque.bll.Utils;

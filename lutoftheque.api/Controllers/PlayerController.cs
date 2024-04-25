@@ -33,6 +33,14 @@ namespace lutoftheque.api.Controllers
 
             return Ok(players);
         }
-       
+
+        [HttpGet("getPlayerById/{playerId}")]
+        public ActionResult<List<Player>> GetPlayerById(int playerId)
+        {
+            var players = _playerService.GetPlayerById(playerId);
+
+            return Ok(players);
+        }
+
     }
 }
