@@ -55,6 +55,12 @@ builder.Services
     }
     );
 
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminPolicy", policy => policy.RequireRole("Admin"));
+});
+
 // mise en place de la journalisation
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();

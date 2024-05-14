@@ -41,5 +41,10 @@ namespace lutoftheque.api.Dto
 
     }
 
-   
+    public class PlayerWithRole
+    {
+        public int PlayerId { get; set; }
+        public string? Nickname { get; set; }
+        public bool IsAdmin { get; set; }
+    }
 }

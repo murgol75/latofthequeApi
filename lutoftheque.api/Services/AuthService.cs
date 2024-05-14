@@ -53,6 +53,8 @@ namespace lutoftheque.api.Services
         {
             var claims = new List<Claim>
     {
+        new Claim(JwtRegisteredClaimNames.Sub, user.PlayerId.ToString()), // ou l'identifiant unique approprié
+        new Claim("userId", user.PlayerId.ToString()),
         new Claim(ClaimTypes.Name, user.Nickname),
         new Claim(ClaimTypes.Role, user.IsAdmin ? "Admin" : "User") 
     };
@@ -62,7 +64,7 @@ namespace lutoftheque.api.Services
             var token = new JwtSecurityToken(
                 _jwtOptions.Issuer,
                 _jwtOptions.Audience,
-                claims,
+                claims : claims,
                 expires: DateTime.Now.AddSeconds(_jwtOptions.Expiration),
                 signingCredentials: creds);
 
