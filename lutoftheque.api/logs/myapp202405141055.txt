@@ -1,0 +1,66 @@
+2024-05-14 10:55:35.036 +02:00 [INF] User profile is available. Using 'C:\Users\murgo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-05-14 10:55:35.243 +02:00 [INF] Now listening on: https://localhost:7238
+2024-05-14 10:55:35.244 +02:00 [INF] Now listening on: http://localhost:5187
+2024-05-14 10:55:35.247 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-14 10:55:35.247 +02:00 [INF] Hosting environment: Development
+2024-05-14 10:55:35.247 +02:00 [INF] Content root path: C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.api\
+2024-05-14 10:55:36.089 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/swagger/index.html - -
+2024-05-14 10:55:36.278 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/swagger/index.html - - - 200 - text/html;charset=utf-8 191.7281ms
+2024-05-14 10:55:36.284 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/_framework/aspnetcore-browser-refresh.js - -
+2024-05-14 10:55:36.287 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/_framework/aspnetcore-browser-refresh.js - - - 200 12362 application/javascript;+charset=utf-8 2.8638ms
+2024-05-14 10:55:36.305 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/_vs/browserLink - -
+2024-05-14 10:55:36.315 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 9.6300ms
+2024-05-14 10:55:36.392 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/swagger/v1/swagger.json - -
+2024-05-14 10:55:36.482 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 90.0171ms
+2024-05-14 10:55:52.420 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Auth/Login - -
+2024-05-14 10:55:52.489 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:55:52.491 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Auth/Login - - - 204 - - 70.7385ms
+2024-05-14 10:55:52.492 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7238/api/Auth/Login application/json 49
+2024-05-14 10:55:52.494 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:55:52.497 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api)'
+2024-05-14 10:55:52.521 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(lutoftheque.bll.models.LoginModel) on controller lutoftheque.api.Controllers.AuthController (lutoftheque.api).
+2024-05-14 10:55:53.299 +02:00 [WRN] The 'bool' property 'IsAdmin' on entity type 'Player' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2024-05-14 10:55:54.020 +02:00 [INF] Executed DbCommand (55ms) [Parameters=[@__nickname_0='?' (Size = 125)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PlayerId], [p].[Birthdate], [p].[Email], [p].[HashPwd], [p].[IsAdmin], [p].[Nickname]
+FROM [Player] AS [p]
+WHERE [p].[Nickname] = @__nickname_0
+2024-05-14 10:55:54.193 +02:00 [INF] Executing OkObjectResult, writing value of type 'lutoftheque.api.Dto.PlayerToken'.
+2024-05-14 10:55:54.201 +02:00 [INF] Executed action lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api) in 1674.8528ms
+2024-05-14 10:55:54.202 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api)'
+2024-05-14 10:55:54.214 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7238/api/Auth/Login application/json 49 - 200 - application/json;+charset=utf-8 1721.2111ms
+2024-05-14 10:55:59.084 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-14 10:55:59.086 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:55:59.086 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - - - 204 - - 2.1914ms
+2024-05-14 10:55:59.089 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-14 10:55:59.149 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:55:59.149 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-14 10:55:59.150 +02:00 [INF] Route matched with {action = "GetPlayerById", controller = "Player"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[lutoftheque.Entity.Models.Player] GetPlayerById(Int32) on controller lutoftheque.api.Controllers.PlayerController (lutoftheque.api).
+2024-05-14 10:55:59.287 +02:00 [WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+2024-05-14 10:55:59.506 +02:00 [INF] Executed DbCommand (212ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[PlayerId], [t].[Nickname], [t].[Birthdate], [t].[Email], [t].[HashPwd], [t].[IsAdmin], [t0].[FkKeywordId], [t0].[FkPlayerId], [t0].[KeywordNote], [t0].[KeywordName], [t0].[KeywordId], [t1].[FkThemeId], [t1].[FkPlayerId], [t1].[ThemeNote], [t1].[ThemeName], [t1].[ThemeId], [t3].[PlayerGameId], [t3].[FkPlayerId], [t3].[FkGameId], [t3].[NumberPossessed], [t3].[Eligible], [t3].[GameName], [t3].[GameId], [t4].[EventId], [t4].[StartTime], [t4].[EndTime], [t4].[RegistrationClosingDate], [t4].[EventName], [t4].[FkOrganizerId], [t4].[Fk_EventId], [t4].[Fk_PlayerId]
+FROM (
+    SELECT TOP(1) [p].[PlayerId], [p].[Nickname], [p].[Birthdate], [p].[Email], [p].[HashPwd], [p].[IsAdmin]
+    FROM [Player] AS [p]
+    WHERE [p].[PlayerId] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p0].[Fk_KeywordId] AS [FkKeywordId], [p0].[Fk_PlayerId] AS [FkPlayerId], [p0].[KeywordNote], [k].[KeywordName], [k].[KeywordId]
+    FROM [Player_Keyword] AS [p0]
+    INNER JOIN [Keyword] AS [k] ON [p0].[Fk_KeywordId] = [k].[KeywordId]
+) AS [t0] ON [t].[PlayerId] = [t0].[FkPlayerId]
+LEFT JOIN (
+    SELECT [p1].[Fk_ThemeId] AS [FkThemeId], [p1].[Fk_PlayerId] AS [FkPlayerId], [p1].[ThemeNote], [t2].[ThemeName], [t2].[ThemeId]
+    FROM [Player_Theme] AS [p1]
+    INNER JOIN [Theme] AS [t2] ON [p1].[Fk_ThemeId] = [t2].[ThemeId]
+) AS [t1] ON [t].[PlayerId] = [t1].[FkPlayerId]
+LEFT JOIN (
+    SELECT [p2].[Player_GameId] AS [PlayerGameId], [p2].[Fk_PlayerId] AS [FkPlayerId], [p2].[Fk_GameId] AS [FkGameId], [p2].[NumberPossessed], [p2].[Eligible], [g].[GameName], [g].[GameId]
+    FROM [Player_Game] AS [p2]
+    LEFT JOIN [Game] AS [g] ON [p2].[Fk_GameId] = [g].[GameId]
+) AS [t3] ON [t].[PlayerId] = [t3].[FkPlayerId]
+LEFT JOIN (
+    SELECT [e].[EventId], [e].[StartTime], [e].[EndTime], [e].[RegistrationClosingDate], [e].[EventName], [e].[Fk_OrganizerID] AS [FkOrganizerId], [p3].[Fk_EventId], [p3].[Fk_PlayerId]
+    FROM [Participate] AS [p3]
+    INNER JOIN [Event] AS [e] ON [p3].[Fk_EventId] = [e].[EventId]
+) AS [t4] ON [t].[PlayerId] = [t4].[Fk_PlayerId]
+ORDER BY [t].[PlayerId], [t0].[FkKeywordId], [t0].[FkPlayerId], [t0].[KeywordId], [t1].[FkThemeId], [t1].[FkPlayerId], [t1].[ThemeId], [t3].[PlayerGameId], [t3].[GameId], [t4].[Fk_EventId], [t4].[Fk_PlayerId]

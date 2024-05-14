@@ -1,0 +1,41 @@
+2024-05-14 10:38:26.518 +02:00 [INF] User profile is available. Using 'C:\Users\murgo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-05-14 10:38:26.695 +02:00 [INF] Now listening on: https://localhost:7238
+2024-05-14 10:38:26.695 +02:00 [INF] Now listening on: http://localhost:5187
+2024-05-14 10:38:26.697 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-14 10:38:26.697 +02:00 [INF] Hosting environment: Development
+2024-05-14 10:38:26.697 +02:00 [INF] Content root path: C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.api\
+2024-05-14 10:38:27.299 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/swagger/index.html - -
+2024-05-14 10:38:27.485 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/swagger/index.html - - - 200 - text/html;charset=utf-8 189.5665ms
+2024-05-14 10:38:27.493 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/_framework/aspnetcore-browser-refresh.js - -
+2024-05-14 10:38:27.496 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/_framework/aspnetcore-browser-refresh.js - - - 200 12362 application/javascript;+charset=utf-8 2.8360ms
+2024-05-14 10:38:27.503 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/_vs/browserLink - -
+2024-05-14 10:38:27.516 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 13.0569ms
+2024-05-14 10:38:27.594 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/swagger/v1/swagger.json - -
+2024-05-14 10:38:27.681 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 87.9938ms
+2024-05-14 10:38:45.743 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Auth/Login - -
+2024-05-14 10:38:45.825 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:38:45.827 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Auth/Login - - - 204 - - 83.8520ms
+2024-05-14 10:38:45.829 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7238/api/Auth/Login application/json 49
+2024-05-14 10:38:45.831 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:38:45.835 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api)'
+2024-05-14 10:38:45.872 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(lutoftheque.bll.models.LoginModel) on controller lutoftheque.api.Controllers.AuthController (lutoftheque.api).
+2024-05-14 10:38:46.781 +02:00 [WRN] The 'bool' property 'IsAdmin' on entity type 'Player' is configured with a database-generated default. This default will always be used for inserts when the property has the value 'false', since this is the CLR default for the 'bool' type. Consider using the nullable 'bool?' type instead, so that the default will only be used for inserts when the property value is 'null'.
+2024-05-14 10:38:47.647 +02:00 [INF] Executed DbCommand (57ms) [Parameters=[@__nickname_0='?' (Size = 125)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PlayerId], [p].[Birthdate], [p].[Email], [p].[HashPwd], [p].[IsAdmin], [p].[Nickname]
+FROM [Player] AS [p]
+WHERE [p].[Nickname] = @__nickname_0
+2024-05-14 10:38:47.848 +02:00 [INF] Executing OkObjectResult, writing value of type 'lutoftheque.api.Dto.PlayerToken'.
+2024-05-14 10:38:47.858 +02:00 [INF] Executed action lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api) in 1981.3762ms
+2024-05-14 10:38:47.859 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api)'
+2024-05-14 10:38:47.875 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7238/api/Auth/Login application/json 49 - 200 - application/json;+charset=utf-8 2046.2318ms
+2024-05-14 10:38:49.571 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-14 10:38:49.573 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:38:49.573 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - - - 204 - - 2.0037ms
+2024-05-14 10:38:49.579 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-14 10:38:49.650 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:38:49.650 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-14 10:38:49.651 +02:00 [INF] Route matched with {action = "GetPlayerById", controller = "Player"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[lutoftheque.Entity.Models.Player] GetPlayerById(Int32) on controller lutoftheque.api.Controllers.PlayerController (lutoftheque.api).
+2024-05-14 10:38:49.658 +02:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'System.String'.
+2024-05-14 10:38:49.658 +02:00 [INF] Executed action lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api) in 6.8855ms
+2024-05-14 10:38:49.658 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-14 10:38:49.658 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - - - 401 - text/plain;+charset=utf-8 79.4010ms

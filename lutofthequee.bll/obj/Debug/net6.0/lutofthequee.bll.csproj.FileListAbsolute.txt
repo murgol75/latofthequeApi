@@ -1,0 +1,4 @@
+C:\Users\murgo\source\repos\latofthequeApi\lutofthequee.bll\obj\Debug\net6.0\lutofthequee.bll.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\murgo\source\repos\latofthequeApi\lutofthequee.bll\obj\Debug\net6.0\lutofthequee.bll.AssemblyInfoInputs.cache
+C:\Users\murgo\source\repos\latofthequeApi\lutofthequee.bll\obj\Debug\net6.0\lutofthequee.bll.AssemblyInfo.cs
+C:\Users\murgo\source\repos\latofthequeApi\lutofthequee.bll\obj\Debug\net6.0\lutofthequee.bll.csproj.CoreCompileInputs.cache

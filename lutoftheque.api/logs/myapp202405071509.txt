@@ -1,0 +1,14 @@
+2024-05-07 15:09:45.911 +02:00 [INF] User profile is available. Using 'C:\Users\murgo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-05-07 15:09:46.115 +02:00 [INF] Now listening on: https://localhost:7238
+2024-05-07 15:09:46.115 +02:00 [INF] Now listening on: http://localhost:5187
+2024-05-07 15:09:46.117 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-07 15:09:46.118 +02:00 [INF] Hosting environment: Development
+2024-05-07 15:09:46.118 +02:00 [INF] Content root path: C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.api\
+2024-05-07 15:09:46.722 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/swagger/index.html - -
+2024-05-07 15:09:46.920 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/_framework/aspnetcore-browser-refresh.js - -
+2024-05-07 15:09:46.925 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/_framework/aspnetcore-browser-refresh.js - - - 200 12362 application/javascript;+charset=utf-8 4.8454ms
+2024-05-07 15:09:46.926 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/swagger/index.html - - - 200 - text/html;charset=utf-8 207.6045ms
+2024-05-07 15:09:46.950 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/_vs/browserLink - -
+2024-05-07 15:09:46.970 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 20.4491ms
+2024-05-07 15:09:47.113 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/swagger/v1/swagger.json - -
+2024-05-07 15:09:47.209 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 95.9773ms

@@ -1,0 +1,26 @@
+2024-05-14 10:34:30.694 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Auth/Login - -
+2024-05-14 10:34:30.703 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:34:30.703 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Auth/Login - - - 204 - - 9.3860ms
+2024-05-14 10:34:30.707 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7238/api/Auth/Login application/json 49
+2024-05-14 10:34:30.708 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:34:30.708 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api)'
+2024-05-14 10:34:30.708 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(lutoftheque.bll.models.LoginModel) on controller lutoftheque.api.Controllers.AuthController (lutoftheque.api).
+2024-05-14 10:34:30.735 +02:00 [INF] Executed DbCommand (9ms) [Parameters=[@__nickname_0='?' (Size = 125)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PlayerId], [p].[Birthdate], [p].[Email], [p].[HashPwd], [p].[IsAdmin], [p].[Nickname]
+FROM [Player] AS [p]
+WHERE [p].[Nickname] = @__nickname_0
+2024-05-14 10:34:30.736 +02:00 [INF] Executing OkObjectResult, writing value of type 'lutoftheque.api.Dto.PlayerToken'.
+2024-05-14 10:34:30.736 +02:00 [INF] Executed action lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api) in 27.8638ms
+2024-05-14 10:34:30.736 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api)'
+2024-05-14 10:34:30.736 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7238/api/Auth/Login application/json 49 - 200 - application/json;+charset=utf-8 28.8115ms
+2024-05-14 10:34:34.505 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-14 10:34:34.505 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:34:34.505 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - - - 204 - - 0.4130ms
+2024-05-14 10:34:34.510 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-14 10:34:34.511 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:34:34.511 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-14 10:34:34.511 +02:00 [INF] Route matched with {action = "GetPlayerById", controller = "Player"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[lutoftheque.Entity.Models.Player] GetPlayerById(Int32) on controller lutoftheque.api.Controllers.PlayerController (lutoftheque.api).
+2024-05-14 10:34:34.511 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-05-14 10:34:34.512 +02:00 [INF] Executed action lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api) in 0.6045ms
+2024-05-14 10:34:34.512 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-14 10:34:34.512 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - - - 401 - application/problem+json;+charset=utf-8 2.1154ms

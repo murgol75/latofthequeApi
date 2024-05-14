@@ -1,0 +1,25 @@
+2024-05-09 16:29:00.211 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-09 16:29:00.219 +02:00 [INF] CORS policy execution successful.
+2024-05-09 16:29:00.219 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - - - 204 - - 8.1814ms
+2024-05-09 16:29:00.223 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-09 16:29:00.298 +02:00 [INF] CORS policy execution successful.
+2024-05-09 16:29:00.298 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-09 16:29:00.300 +02:00 [INF] Route matched with {action = "GetPlayerById", controller = "Player"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[lutoftheque.Entity.Models.Player] GetPlayerById(Int32) on controller lutoftheque.api.Controllers.PlayerController (lutoftheque.api).
+2024-05-09 16:29:00.303 +02:00 [INF] Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2024-05-09 16:29:00.304 +02:00 [INF] Executed action lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api) in 3.7114ms
+2024-05-09 16:29:00.304 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-09 16:29:00.304 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - - - 404 - application/problem+json;+charset=utf-8 81.8395ms
+2024-05-09 16:29:32.007 +02:00 [INF] User profile is available. Using 'C:\Users\murgo\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-05-09 16:29:32.169 +02:00 [INF] Now listening on: https://localhost:7238
+2024-05-09 16:29:32.169 +02:00 [INF] Now listening on: http://localhost:5187
+2024-05-09 16:29:32.172 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-05-09 16:29:32.172 +02:00 [INF] Hosting environment: Development
+2024-05-09 16:29:32.172 +02:00 [INF] Content root path: C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.api\
+2024-05-09 16:29:32.669 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/swagger/index.html - -
+2024-05-09 16:29:32.879 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/swagger/index.html - - - 200 - text/html;charset=utf-8 213.4813ms
+2024-05-09 16:29:32.893 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/_framework/aspnetcore-browser-refresh.js - -
+2024-05-09 16:29:32.896 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/_framework/aspnetcore-browser-refresh.js - - - 200 12362 application/javascript;+charset=utf-8 3.1689ms
+2024-05-09 16:29:32.914 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/_vs/browserLink - -
+2024-05-09 16:29:32.930 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 15.5463ms
+2024-05-09 16:29:33.006 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/swagger/v1/swagger.json - -
+2024-05-09 16:29:33.116 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 110.1076ms

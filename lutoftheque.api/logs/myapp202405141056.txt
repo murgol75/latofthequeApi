@@ -1,0 +1,15 @@
+2024-05-14 10:56:00.099 +02:00 [INF] Executing OkObjectResult, writing value of type 'lutoftheque.Entity.Models.Player'.
+2024-05-14 10:56:00.119 +02:00 [INF] Executed action lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api) in 968.5044ms
+2024-05-14 10:56:00.119 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-14 10:56:00.119 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - - - 200 - application/json;+charset=utf-8 1030.1874ms
+2024-05-14 10:56:02.933 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/NaN - -
+2024-05-14 10:56:02.935 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:56:02.935 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/NaN - - - 204 - - 2.8716ms
+2024-05-14 10:56:02.939 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/NaN - -
+2024-05-14 10:56:02.939 +02:00 [INF] CORS policy execution successful.
+2024-05-14 10:56:02.939 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-14 10:56:02.939 +02:00 [INF] Route matched with {action = "GetPlayerById", controller = "Player"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[lutoftheque.Entity.Models.Player] GetPlayerById(Int32) on controller lutoftheque.api.Controllers.PlayerController (lutoftheque.api).
+2024-05-14 10:56:02.944 +02:00 [INF] Executing BadRequestObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2024-05-14 10:56:02.945 +02:00 [INF] Executed action lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api) in 5.4173ms
+2024-05-14 10:56:02.945 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-14 10:56:02.945 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/NaN - - - 400 - application/problem+json;+charset=utf-8 6.3528ms

@@ -1,0 +1,54 @@
+2024-05-07 08:17:03.859 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Auth/Login - -
+2024-05-07 08:17:03.867 +02:00 [INF] CORS policy execution successful.
+2024-05-07 08:17:03.869 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Auth/Login - - - 204 - - 10.0925ms
+2024-05-07 08:17:03.876 +02:00 [INF] Request starting HTTP/2 POST https://localhost:7238/api/Auth/Login application/json 49
+2024-05-07 08:17:03.876 +02:00 [INF] CORS policy execution successful.
+2024-05-07 08:17:03.877 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api)'
+2024-05-07 08:17:03.877 +02:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login(lutoftheque.bll.models.LoginModel) on controller lutoftheque.api.Controllers.AuthController (lutoftheque.api).
+2024-05-07 08:17:03.888 +02:00 [INF] Executed DbCommand (10ms) [Parameters=[@__nickname_0='?' (Size = 125)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[PlayerId], [p].[Birthdate], [p].[Email], [p].[HashPwd], [p].[IsAdmin], [p].[Nickname]
+FROM [Player] AS [p]
+WHERE [p].[Nickname] = @__nickname_0
+2024-05-07 08:17:03.889 +02:00 [INF] Executing OkObjectResult, writing value of type 'lutoftheque.api.Dto.PlayerToken'.
+2024-05-07 08:17:03.889 +02:00 [INF] Executed action lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api) in 11.7279ms
+2024-05-07 08:17:03.889 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.AuthController.Login (lutoftheque.api)'
+2024-05-07 08:17:03.889 +02:00 [INF] Request finished HTTP/2 POST https://localhost:7238/api/Auth/Login application/json 49 - 200 - application/json;+charset=utf-8 12.5560ms
+2024-05-07 08:17:05.200 +02:00 [INF] Request starting HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-07 08:17:05.200 +02:00 [INF] CORS policy execution successful.
+2024-05-07 08:17:05.200 +02:00 [INF] Request finished HTTP/2 OPTIONS https://localhost:7238/api/Player/getPlayerById/9 - - - 204 - - 0.4395ms
+2024-05-07 08:17:05.204 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - -
+2024-05-07 08:17:05.204 +02:00 [INF] CORS policy execution successful.
+2024-05-07 08:17:05.204 +02:00 [INF] Executing endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-07 08:17:05.204 +02:00 [INF] Route matched with {action = "GetPlayerById", controller = "Player"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[lutoftheque.Entity.Models.Player] GetPlayerById(Int32) on controller lutoftheque.api.Controllers.PlayerController (lutoftheque.api).
+2024-05-07 08:17:05.463 +02:00 [INF] Executed DbCommand (258ms) [Parameters=[@__id_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[PlayerId], [t].[Nickname], [t].[Birthdate], [t].[Email], [t].[HashPwd], [t].[IsAdmin], [t0].[FkKeywordId], [t0].[FkPlayerId], [t0].[KeywordNote], [t0].[KeywordName], [t0].[KeywordId], [t1].[FkThemeId], [t1].[FkPlayerId], [t1].[ThemeNote], [t1].[ThemeName], [t1].[ThemeId], [t3].[PlayerGameId], [t3].[FkPlayerId], [t3].[FkGameId], [t3].[NumberPossessed], [t3].[Eligible], [t3].[GameName], [t3].[GameId], [t4].[EventId], [t4].[StartTime], [t4].[EndTime], [t4].[RegistrationClosingDate], [t4].[EventName], [t4].[FkOrganizerId], [t4].[Fk_EventId], [t4].[Fk_PlayerId]
+FROM (
+    SELECT TOP(1) [p].[PlayerId], [p].[Nickname], [p].[Birthdate], [p].[Email], [p].[HashPwd], [p].[IsAdmin]
+    FROM [Player] AS [p]
+    WHERE [p].[PlayerId] = @__id_0
+) AS [t]
+LEFT JOIN (
+    SELECT [p0].[Fk_KeywordId] AS [FkKeywordId], [p0].[Fk_PlayerId] AS [FkPlayerId], [p0].[KeywordNote], [k].[KeywordName], [k].[KeywordId]
+    FROM [Player_Keyword] AS [p0]
+    INNER JOIN [Keyword] AS [k] ON [p0].[Fk_KeywordId] = [k].[KeywordId]
+) AS [t0] ON [t].[PlayerId] = [t0].[FkPlayerId]
+LEFT JOIN (
+    SELECT [p1].[Fk_ThemeId] AS [FkThemeId], [p1].[Fk_PlayerId] AS [FkPlayerId], [p1].[ThemeNote], [t2].[ThemeName], [t2].[ThemeId]
+    FROM [Player_Theme] AS [p1]
+    INNER JOIN [Theme] AS [t2] ON [p1].[Fk_ThemeId] = [t2].[ThemeId]
+) AS [t1] ON [t].[PlayerId] = [t1].[FkPlayerId]
+LEFT JOIN (
+    SELECT [p2].[Player_GameId] AS [PlayerGameId], [p2].[Fk_PlayerId] AS [FkPlayerId], [p2].[Fk_GameId] AS [FkGameId], [p2].[NumberPossessed], [p2].[Eligible], [g].[GameName], [g].[GameId]
+    FROM [Player_Game] AS [p2]
+    LEFT JOIN [Game] AS [g] ON [p2].[Fk_GameId] = [g].[GameId]
+) AS [t3] ON [t].[PlayerId] = [t3].[FkPlayerId]
+LEFT JOIN (
+    SELECT [e].[EventId], [e].[StartTime], [e].[EndTime], [e].[RegistrationClosingDate], [e].[EventName], [e].[Fk_OrganizerID] AS [FkOrganizerId], [p3].[Fk_EventId], [p3].[Fk_PlayerId]
+    FROM [Participate] AS [p3]
+    INNER JOIN [Event] AS [e] ON [p3].[Fk_EventId] = [e].[EventId]
+) AS [t4] ON [t].[PlayerId] = [t4].[Fk_PlayerId]
+ORDER BY [t].[PlayerId], [t0].[FkKeywordId], [t0].[FkPlayerId], [t0].[KeywordId], [t1].[FkThemeId], [t1].[FkPlayerId], [t1].[ThemeId], [t3].[PlayerGameId], [t3].[GameId], [t4].[Fk_EventId], [t4].[Fk_PlayerId]
+2024-05-07 08:17:06.147 +02:00 [INF] Executing OkObjectResult, writing value of type 'lutoftheque.Entity.Models.Player'.
+2024-05-07 08:17:06.148 +02:00 [INF] Executed action lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api) in 943.9664ms
+2024-05-07 08:17:06.148 +02:00 [INF] Executed endpoint 'lutoftheque.api.Controllers.PlayerController.GetPlayerById (lutoftheque.api)'
+2024-05-07 08:17:06.148 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7238/api/Player/getPlayerById/9 - - - 200 - application/json;+charset=utf-8 944.4654ms

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\murgo\\source\\repos\\lutoftheque\\lutoftheque.Entity\\lutoftheque.Entity.csproj",
+      "projectUniqueName": "C:\\Users\\murgo\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\lutoftheque.Entity.csproj",
       "projectName": "lutoftheque.Entity",
-      "projectPath": "C:\\Users\\murgo\\source\\repos\\lutoftheque\\lutoftheque.Entity\\lutoftheque.Entity.csproj",
+      "projectPath": "C:\\Users\\murgo\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\lutoftheque.Entity.csproj",
       "packagesPath": "C:\\Users\\murgo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\murgo\\source\\repos\\lutoftheque\\lutoftheque.Entity\\obj\\",
+      "outputPath": "C:\\Users\\murgo\\source\\repos\\latofthequeApi\\lutoftheque.Entity\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\murgo\\AppData\\Roaming\\NuGet\\NuGet.Config",
