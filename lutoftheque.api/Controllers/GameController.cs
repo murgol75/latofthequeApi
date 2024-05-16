@@ -29,9 +29,9 @@ namespace lutoftheque.api.Controllers
         }
 
         [HttpGet("getGameById/{gameId}")]
-        public ActionResult <Game> Get(int id)
+        public ActionResult <Game> Get(int gameId)
         {
-            var game = _gameService.GetGameById(id);
+            var game = _gameService.GetGameById(gameId);
             return Ok(game);
         }
         //[HttpPost("createGame")]
