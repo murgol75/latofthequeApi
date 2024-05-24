@@ -55,7 +55,6 @@ C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\l
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\lutoftheque.Entity.AssemblyInfoInputs.cache
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\lutoftheque.Entity.AssemblyInfo.cs
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\lutoftheque.Entity.csproj.CoreCompileInputs.cache
-C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\lutoftheque.Entity.csproj.CopyComplete
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\lutoftheque.Entity.dll
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\refint\lutoftheque.Entity.dll
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\lutoftheque.Entity.pdb
@@ -70,3 +69,5 @@ C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\bin\Debug\net6.0\S
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\lutoftheque.Entity.sourcelink.json
+C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.Entity\obj\Debug\net6.0\lutofthe.B3442C66.Up2Date

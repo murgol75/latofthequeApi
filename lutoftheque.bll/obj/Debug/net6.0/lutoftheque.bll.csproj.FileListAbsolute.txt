@@ -11,8 +11,9 @@ C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\luto
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\lutoftheque.bll.AssemblyInfoInputs.cache
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\lutoftheque.bll.AssemblyInfo.cs
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\lutoftheque.bll.csproj.CoreCompileInputs.cache
-C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\lutoftheque.bll.csproj.CopyComplete
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\lutoftheque.bll.dll
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\refint\lutoftheque.bll.dll
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\lutoftheque.bll.pdb
 C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\ref\lutoftheque.bll.dll
+C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\lutoftheque.bll.sourcelink.json
+C:\Users\murgo\source\repos\latofthequeApi\lutoftheque.bll\obj\Debug\net6.0\lutofthe.84ED39DC.Up2Date
