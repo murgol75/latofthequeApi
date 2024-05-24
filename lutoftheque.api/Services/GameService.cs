@@ -54,7 +54,9 @@ namespace lutoftheque.api.Services
                     FkTheme = g.FkTheme.ThemeName, 
                     FkKeywords = g.FkKeywords.Select(k => k.KeywordName).ToList(),
                     FkSecondaryThemes = g.FkSecondaryThemes.Select(st => st.ThemeName).ToList()
-                }).ToList();
+                })
+                .OrderBy(g => g.GameName)
+                .ToList();
         }
 
         public GameFullDto? GetGameById(int id)
