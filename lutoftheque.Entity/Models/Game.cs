@@ -37,3 +37,19 @@ public partial class Game
 
     public virtual ICollection<Theme> FkSecondaryThemes { get; set; } = new List<Theme>();
 }
+
+public class GameRequest
+{
+    public string GameName { get; set; }
+    public int PlayersMin { get; set; }
+    public int PlayersMax { get; set; }
+    public int AverageDuration { get; set; }
+    public int AgeMin { get; set; }
+    public string Picture { get; set; }
+    public string GameDescription { get; set; }
+    public string Video { get; set; }
+    public int? FkThemeId { get; set; }
+    public bool? IsExtension { get; set; }
+    public List<int> FkKeywordsId { get; set; } // Liste d'IDs de mots-clés
+}
+

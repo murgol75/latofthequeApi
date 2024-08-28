@@ -1,4 +1,5 @@
 ﻿using lutoftheque.api.Dto;
+using lutoftheque.api.Exceptions;
 using lutoftheque.Entity.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -16,11 +17,11 @@ namespace lutoftheque.api.Services
         private readonly lutofthequeContext context;
 
         //Ce constructeur prend un paramètre context de type lutofthequeContext et l'assigne à la variable context de la classe.
-        public GameService (lutofthequeContext context)
+        public GameService(lutofthequeContext context)
         {
             //this.context = context; : this est utilisé pour faire la distinction entre le paramètre context et la variable de classe context.
             this.context = context;
-         }
+        }
 
 
         //public int GameId { get; set; }
@@ -51,7 +52,7 @@ namespace lutoftheque.api.Services
                     AverageDuration = g.AverageDuration,
                     AgeMin = g.AgeMin,
                     Picture = g.Picture,
-                    FkTheme = g.FkTheme.ThemeName, 
+                    FkTheme = g.FkTheme.ThemeName,
                     FkKeywords = g.FkKeywords.Select(k => k.KeywordName).ToList(),
                     FkSecondaryThemes = g.FkSecondaryThemes.Select(st => st.ThemeName).ToList()
                 })
@@ -123,5 +124,124 @@ namespace lutoftheque.api.Services
                     Picture = g.Picture
                 }).ToList();
         }
+
+        public void CreateGame(string gameName, int playersMin, int playersMax, int averageDuration, int ageMin, string picture, string gameDescription, string video, int? fkThemeId, bool? isExtension, List<int> fkKeywordsId)
+        {
+            Game newGame = new Game
+            {
+                GameName = gameName,
+                PlayersMin = playersMin,
+                PlayersMax = playersMax,
+                AverageDuration = averageDuration,
+                AgeMin = ageMin,
+                Picture = picture,
+                GameDescription = gameDescription,
+                Video = video,
+                FkThemeId = fkThemeId,
+                IsExtension = isExtension,
+            };
+
+            #region Verification de l'existance d'un jeu avec le même nom
+
+            var existingGame = context.Games.FirstOrDefault(p => p.GameName == gameName);
+            if (existingGame != null)
+            {
+                throw new DuplicateNicknameException("Ce Jeu existe déjà");
+            }
+
+            #endregion
+
+            #region Ajout des mots-clés
+
+            if (fkKeywordsId != null && fkKeywordsId.Any())
+            {
+                var keywords = context.Keywords.Where(k => fkKeywordsId.Contains(k.KeywordId)).ToList();
+                newGame.FkKeywords = keywords;
+            }
+
+            #endregion
+
+            context.Games.Add(newGame);
+            context.SaveChanges();  // à faire pour enregistrer l'entrée
+        }
+
+
+        public List<Theme> GetThemes()
+        {
+            return context.Themes
+                .Select(t => new Theme
+                {
+                    ThemeId = t.ThemeId,
+                    ThemeName = t.ThemeName,
+                    ThemeDescription = t.ThemeDescription
+                })
+                .ToList();
+        }
+
+        public List<Keyword> GetKeywords()
+        {
+            return context.Keywords
+                            .Select(k => new Keyword
+                            {
+                                KeywordId = k.KeywordId,
+                                KeywordName = k.KeywordName,
+                                KeywordDescription = k.KeywordDescription
+                            })
+                            .ToList();
+        }
+
+        public bool DeleteGame01(int id)
+        {
+            Game gameToDelete = context.Games.FirstOrDefault(g => g.GameId == id);
+            if (gameToDelete == null)
+            {
+                return false; // Jeu non trouvé
+            }
+
+            context.Games.Remove(gameToDelete);
+            context.SaveChanges();
+            return true; // Suppression réussie
+        }
+
+        public bool DeleteGame(int id)
+        {
+            var gameToDelete = context.Games
+                .Include(g => g.PlayerGames)        // Inclure les PlayerGames associés
+                .Include(g => g.FkKeywords)         // Inclure les Keywords associés
+                .Include(g => g.FkSecondaryThemes)  // Inclure les SecondaryThemes associés
+                .FirstOrDefault(g => g.GameId == id);
+
+            if (gameToDelete == null)
+            {
+                return false; // Jeu non trouvé
+            }
+
+            // Supprimer les enregistrements associés dans PlayerGames
+            if (gameToDelete.PlayerGames != null && gameToDelete.PlayerGames.Any())
+            {
+                context.PlayerGames.RemoveRange(gameToDelete.PlayerGames);
+            }
+
+            // Supprimer les mots-clés associés
+            if (gameToDelete.FkKeywords != null && gameToDelete.FkKeywords.Any())
+            {
+                gameToDelete.FkKeywords.Clear(); // Dissocier les mots-clés
+            }
+
+            // Supprimer les SecondaryThemes associés
+            if (gameToDelete.FkSecondaryThemes != null && gameToDelete.FkSecondaryThemes.Any())
+            {
+                gameToDelete.FkSecondaryThemes.Clear(); // Dissocier les secondary themes
+            }
+
+            // Supprimer le jeu principal
+            context.Games.Remove(gameToDelete);
+
+            // Sauvegarder les changements dans la base de données
+            context.SaveChanges();
+
+            return true; // Suppression réussie
+        }
+
     }
 }

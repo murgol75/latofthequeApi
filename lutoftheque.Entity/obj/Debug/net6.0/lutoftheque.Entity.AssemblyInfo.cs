@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lutoftheque.Entity")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0e5ab3acfa62c501546e2762e4983c07672e4793")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91d92d37f8589e4e58c9b5e23e75fa16dda18476")]
 [assembly: System.Reflection.AssemblyProductAttribute("lutoftheque.Entity")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lutoftheque.Entity")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

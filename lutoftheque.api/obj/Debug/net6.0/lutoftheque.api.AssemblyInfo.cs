@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lutoftheque.api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79914a44bff43323af2dd6c0ce41750c2cdb54dd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+91d92d37f8589e4e58c9b5e23e75fa16dda18476")]
 [assembly: System.Reflection.AssemblyProductAttribute("lutoftheque.api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lutoftheque.api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
