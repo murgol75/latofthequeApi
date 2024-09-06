@@ -4,6 +4,7 @@ using lutoftheque.api.Services;
 using lutoftheque.Entity.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 
 namespace lutoftheque.api.Controllers
@@ -38,6 +39,7 @@ namespace lutoftheque.api.Controllers
             var game = _gameService.GetGameById(gameId);
             return Ok(game);
         }
+        
         //[HttpPost("createGame")]
         [HttpPost("createGame")]
         [Authorize(Roles = "Admin")]
@@ -125,6 +127,109 @@ namespace lutoftheque.api.Controllers
             return NotFound(); // Événement non trouvé
 
         }
+
+
+
+        //MODIFIER UN JEU
+        [HttpPut("updateGame/{gameId}")]
+        [Authorize(Roles = "Admin")]
+        public IActionResult UpdateGame(int gameId, [FromBody] GameRequest gameUpdated)
+        {
+            if (gameUpdated == null || !ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            // Sinon on essaye de mettre à jour le jeu
+            try
+            {
+                _gameService.UpdateGame(
+                    gameId,
+                    gameUpdated.GameName,
+                    gameUpdated.PlayersMin,
+                    gameUpdated.PlayersMax,
+                    gameUpdated.AverageDuration,
+                    gameUpdated.AgeMin,
+                    gameUpdated.Picture,
+                    gameUpdated.GameDescription,
+                    gameUpdated.Video,
+                    gameUpdated.FkThemeId,
+                    gameUpdated.IsExtension,
+                    gameUpdated.FkKeywordsId);
+                return NoContent(); // 204 - La mise à jour a été effectuée sans retour de contenu
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Erreur interne");
+            }
+        }
+
+
+        //[HttpPatch("patchGame/{gameId}")]
+        //[Authorize(Roles = "Admin")]
+        //public IActionResult PatchGame(int gameId, [FromBody] JsonPatchDocument<GameRequest> patchDoc)
+        //{
+        //    if (patchDoc == null)
+        //    {
+        //        return BadRequest("Invalid patch document.");
+        //    }
+
+        //    // Récupérer l'entité Game à partir de la base de données (doit être une entité et non un DTO)
+        //    var gameFromDb = _gameService.GetGameEntityById(gameId);
+
+        //    if (gameFromDb == null)
+        //    {
+        //        return NotFound($"Game with ID {gameId} not found.");
+        //    }
+
+        //    // Créer un objet GameRequest basé sur les valeurs actuelles de l'entité Game
+        //    var gameToPatch = new GameRequest
+        //    {
+        //        GameName = gameFromDb.GameName,
+        //        PlayersMin = gameFromDb.PlayersMin,
+        //        PlayersMax = gameFromDb.PlayersMax,
+        //        AverageDuration = gameFromDb.AverageDuration,
+        //        AgeMin = gameFromDb.AgeMin,
+        //        Picture = gameFromDb.Picture,
+        //        GameDescription = gameFromDb.GameDescription,
+        //        Video = gameFromDb.Video,
+        //        FkThemeId = gameFromDb.FkThemeId,
+        //        IsExtension = gameFromDb.IsExtension,
+        //        // Ne pas inclure FkKeywordsId pour le patch
+        //    };
+
+        //    // Appliquer les modifications du patch document (pour les champs simples uniquement)
+        //    try
+        //    {
+        //        patchDoc.ApplyTo(gameToPatch, ModelState);  // Applique le patch
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest($"Error applying patch: {ex.Message}");
+        //    }
+
+        //    // Vérifier si le modèle résultant est valide après l'application du patch
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    // Mettre à jour les champs simples du jeu
+        //    _gameService.UpdateGame(gameId, gameToPatch);
+
+        //    // Maintenant, gérer séparément les modifications de FkKeywordsId (si besoin)
+        //    if (gameToPatch.FkKeywordsId != null)
+        //    {
+        //        // Mettre à jour les mots-clés dans le service
+        //        _gameService.UpdateGameKeywords(gameId, gameToPatch.FkKeywordsId);
+        //    }
+
+        //    return NoContent();  // 204 - No Content, la mise à jour a été effectuée avec succès
+        //}
+
+
+
+
 
     }
 }

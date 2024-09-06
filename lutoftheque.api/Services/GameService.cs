@@ -86,13 +86,22 @@ namespace lutoftheque.api.Services
                 Video = game.Video,
                 FkThemeId = game.FkThemeId,
                 IsExtension = game.IsExtension,
-                FkTheme = game.FkTheme.ThemeName,
-                FkKeywords = game.FkKeywords.Select(k => k.KeywordName).ToList(),
-                FkSecondaryThemes = game.FkSecondaryThemes.Select(k => k.ThemeName).ToList(),
+                FkTheme = game.FkTheme != null ? game.FkTheme.ThemeName : null, // Vérifie si FkTheme est null
+                FkKeywords = game.FkKeywords != null ? game.FkKeywords.Select(k => k.KeywordName).ToList() : new List<string>(), // Vérifie si FkKeywords est null
+                FkSecondaryThemes = game.FkSecondaryThemes != null ? game.FkSecondaryThemes.Select(k => k.ThemeName).ToList() : new List<string>(), // Vérifie si FkSecondaryThemes est null
             };
 
             return gameFullDto;
         }
+
+        //MemberAccessException sert pour updater le jeu
+        public Game GetGameEntityById(int gameId)
+        {
+            return context.Games
+                .Include(g => g.FkKeywords)  // Inclure les mots-clés
+                .FirstOrDefault(g => g.GameId == gameId);  // Récupérer l'entité complète
+        }
+
 
         public List<GameFullDto> GetGamesForActualEvent(int eventId)
         {
@@ -190,18 +199,6 @@ namespace lutoftheque.api.Services
                             .ToList();
         }
 
-        public bool DeleteGame01(int id)
-        {
-            Game gameToDelete = context.Games.FirstOrDefault(g => g.GameId == id);
-            if (gameToDelete == null)
-            {
-                return false; // Jeu non trouvé
-            }
-
-            context.Games.Remove(gameToDelete);
-            context.SaveChanges();
-            return true; // Suppression réussie
-        }
 
         public bool DeleteGame(int id)
         {
@@ -242,6 +239,52 @@ namespace lutoftheque.api.Services
 
             return true; // Suppression réussie
         }
+
+
+        public void UpdateGame(int gameId, string gameName, int playersMin, int playersMax, int averageDuration, int ageMin, string picture, string gameDescription, string video, int? fkThemeId, bool? isExtension, List<int> fkKeywordsId)
+        {
+            var gameFromDb = context.Games
+                .Include(g => g.FkKeywords)
+                .FirstOrDefault(g => g.GameId == gameId);
+
+            //if (gameFromDb == null)
+            //{
+            //    throw new NotFoundException("Game not found");
+            //}
+
+            // Mise à jour des propriétés du jeu
+            gameFromDb.GameName = gameName;
+            gameFromDb.PlayersMin = playersMin;
+            gameFromDb.PlayersMax = playersMax;
+            gameFromDb.AverageDuration = averageDuration;
+            gameFromDb.AgeMin = ageMin;
+            gameFromDb.Picture = picture;
+            gameFromDb.GameDescription = gameDescription;
+            gameFromDb.Video = video;
+            gameFromDb.FkThemeId = fkThemeId;
+            gameFromDb.IsExtension = isExtension;
+
+            // Gestion des mots-clés
+            if (fkKeywordsId != null && fkKeywordsId.Any())
+            {
+                // Effacer les mots-clés actuels et les remplacer par les nouveaux
+                gameFromDb.FkKeywords.Clear();
+                var keywords = context.Keywords.Where(k => fkKeywordsId.Contains(k.KeywordId)).ToList();
+                foreach (var keyword in keywords)
+                {
+                    gameFromDb.FkKeywords.Add(keyword);
+                }
+            }
+
+            // Sauvegarder les modifications dans la base de données
+            context.SaveChanges();
+        }
+
+
+
+
+
+
 
     }
 }
